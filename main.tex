@@ -1,0 +1,67 @@
+%        File: main.tex
+%     Created: mar. juil. 29 04:00  2014 C
+% Last Change: mar. juil. 29 04:00  2014 C
+%
+\documentclass[11pt, a4paper, twoside]{book}
+
+\include{preamble/preamble}
+
+\includeonly{
+  preamble/preamble,
+  covers/titlepage,
+  covers/coverpage,
+  preamble/thanks,
+  preamble/toc,
+  introduction/introduction,
+  chapters/contexte,
+  chapters/subject,
+  %chapters/work,
+  %chapters/companyAssessment,
+  %chapters/personalAssessment,
+  %conclusion/conclusion,
+  %annexes/annexe1,
+  %annexes/annexe2
+}
+
+\begin{document}
+\frontmatter
+\pagestyle{front}%style des en-têtes pour cette partie
+\include{covers/coverpage}
+\thispagestyle{empty}
+\include{covers/titlepage}
+\include{preamble/thanks}
+\include{preamble/toc}
+
+\mainmatter
+\pagestyle{main}%style des en-têtes pour cette partie
+\include{introduction/introduction}
+\include{chapters/contexte}
+\include{chapters/subject}
+\include{chapters/work}
+\include{chapters/companyAssessment}
+\include{chapters/personalAssessment}
+
+\cleardoublepage% le corps du document est terminé
+
+\include{conclusion/conclusion}
+
+\appendix
+
+\pagestyle{back}
+\include{annexes/annexe1}
+\include{annexes/annexe2}
+
+\printglossary[title=Glossaire]
+
+\backmatter
+
+\makenomenclature
+
+\listoffigures
+\addcontentsline{toc}{chapter}{Table des figures}
+\listoftables
+\addcontentsline{toc}{chapter}{Liste des tableaux}
+
+\end{document}
+
+
