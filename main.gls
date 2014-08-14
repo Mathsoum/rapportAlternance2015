@@ -2,15 +2,19 @@
 \begin{theglossary}\glossaryheader
 \glsgroupheading{B}\relax \glsresetentrylist %
 \glossentry{back-end}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{5}\delimN 
-		\setentrycounter[]{page}\glsnumberformat{45}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{5}}}\glsgroupskip
+\glsgroupheading{E}\relax \glsresetentrylist %
+\glossentry{ent}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{5}}}\glsgroupskip
 \glsgroupheading{F}\relax \glsresetentrylist %
 \glossentry{front-end}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{5}\delimN 
-		\setentrycounter[]{page}\glsnumberformat{45}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{5}}}\glsgroupskip
 \glsgroupheading{I}\relax \glsresetentrylist %
 \glossentry{ide}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{4}}}\glsgroupskip
+\glsgroupheading{L}\relax \glsresetentrylist %
+\glossentry{lms}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{5}}}\glsgroupskip
 \glsgroupheading{P}\relax \glsresetentrylist %
 \glossentry{paas}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{4}}}%
@@ -18,5 +22,8 @@
 		\setentrycounter[]{page}\glsnumberformat{1}}}\glsgroupskip
 \glsgroupheading{S}\relax \glsresetentrylist %
 \glossentry{saas}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{4}}}%
+		\setentrycounter[]{page}\glsnumberformat{4}}}\glsgroupskip
+\glsgroupheading{W}\relax \glsresetentrylist %
+\glossentry{webdav}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{6}}}%
 \end{theglossary}\glossarypostamble
