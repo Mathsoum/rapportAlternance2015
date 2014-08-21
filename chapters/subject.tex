@@ -104,7 +104,7 @@ unités de cour dans ce format de question intéractive.
 
 Mon travail sur les questions intéractives a été de rendre possible la saisie par
 l'utilisateur d'une unité de cours spéciale qui sera une question intéractive.
-Les questions seront rédigées au format Moodle GIFT puis analysé et converties
+Les questions seront rédigées au format Moodle GIFT puis analysées et converties
 pour l'intégration dans les formats d'exportations.
 
 \section{Démarche méthodologique}
@@ -139,6 +139,23 @@ développement.\\
 De manière plus globale mais toujours dans la méthodologie de travail, nous
 faisions des \og daily meeting \fg{} avec John et Vincent afin de tenir compte du
 travail fait la journée passée et de ce sur quoi nous allions travailler pour la
-journée à venir.
+journée à venir.\\
+
+Un dernier point sur la démarche de travail que je vais abordé ici est la phase
+de test. Pour chaque fonctionnalité développée, une contrainte de validation
+était l'écriture de tests pour une couverture de code optimale. Pour vérifier
+cette couverture de code, nous utilisions le plugin de couverture de code
+fournit avec IntelliJ IDEA.
+
+Pour l'écriture des tests -- ou plus précisemment des spécifications -- nous
+avons utilisé le framework Spock. C'est un framework pour écrire des
+spécification. Il permet de spécifier le comportement de chaque méthode d'une
+classe dans une classe de test -- spécification. Ce framework permet de faire
+des tests sur le comportement de la classe testée en simulant ses intéractions
+avec de faux objets, des \gloss{mock}. Pour faire cela, il nous permet de suivre
+le principe du \og given, when, then \fg{}. Ce principe consiste à spécifier un
+état de base -- given -- à lui appliquer un stimuli, un appel de fonction sur un
+objet réel par exemple -- when -- et à vérifier que les différentes
+intéractions fonctionnent et que l'objet réel a bien changé d'état -- then.
 
 
