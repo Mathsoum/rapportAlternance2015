@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2014.5.22)  21 AUG 2014 15:41
+This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2014.5.22)  23 AUG 2014 11:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main
+**main.tex
 (./main.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 2 languages loaded.
@@ -1040,27 +1040,26 @@ Package glossaries Info: Writing glossary file main.glo on input line 66.
 (./covers/titlepage.aux) (./preamble/thanks.aux) (./preamble/toc.aux)
 (./introduction/introduction.aux) (./chapters/contexte.aux)
 (./chapters/subject.aux) (./chapters/work.aux)
-(./chapters/companyAssessment.aux) (./chapters/personalAssessment.aux)
-(./conclusion/conclusion.aux) (./annexes/annexe1.aux) (./annexes/annexe2.aux))
+(./chapters/personalAssessment.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Info: Redefining \degres on input line 26.
-LaTeX Info: Redefining \dots on input line 26.
-LaTeX Info: Redefining \up on input line 26.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Info: Redefining \degres on input line 22.
+LaTeX Info: Redefining \dots on input line 22.
+LaTeX Info: Redefining \up on input line 22.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1126,7 +1125,7 @@ e
 
 \c@lstlisting=\count181
 \AtBeginShipoutBox=\box45
-Package hyperref Info: Link coloring OFF on input line 26.
+Package hyperref Info: Link coloring OFF on input line 22.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -1135,9 +1134,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count182
 )
-LaTeX Info: Redefining \ref on input line 26.
-LaTeX Info: Redefining \pageref on input line 26.
-LaTeX Info: Redefining \nameref on input line 26.
+LaTeX Info: Redefining \ref on input line 22.
+LaTeX Info: Redefining \pageref on input line 22.
+LaTeX Info: Redefining \nameref on input line 22.
 
 (./main.out) (./main.out)
 \@outlinefile=\write7
@@ -1161,20 +1160,20 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 3.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<images/elaastic_blue.pdf, id=182, 704.6325pt x 220.825pt>
+<images/elaastic_blue.pdf, id=157, 704.6325pt x 220.825pt>
 File: images/elaastic_blue.pdf Graphic file (type pdf)
 
 <use images/elaastic_blue.pdf>
 Package pdftex.def Info: images/elaastic_blue.pdf used on input line 9.
 (pdftex.def)             Requested size: 352.3154pt x 110.41222pt.
 
-<images/ticetime.png, id=183, 580.1675pt x 199.74625pt>
+<images/ticetime.png, id=158, 580.1675pt x 199.74625pt>
 File: images/ticetime.png Graphic file (type png)
 
 <use images/ticetime.png>
 Package pdftex.def Info: images/ticetime.png used on input line 29.
 (pdftex.def)             Requested size: 145.0415pt x 49.93643pt.
- <images/logo.png, id=185, 281.05pt x 82.3075pt>
+ <images/logo.png, id=160, 281.05pt x 82.3075pt>
 File: images/logo.png Graphic file (type png)
 
 <use images/logo.png>
@@ -1209,27 +1208,38 @@ l.37 \end{titlepage}
 ier (name{page.ii}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.2 \chapter
-            *{Remerciements} [2
+l.3 \chapter
+            *{} [2
 
 
+]
+Underfull \hbox (badness 10000) in paragraph at lines 6--10
 
-]) [3]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--18
+
+ []
+
+) [3
+
+]
 \openout2 = `preamble/toc.aux'.
 
  (./preamble/toc.tex [4
 
 
 
-] (./main.toc
-[5])
+] (./main.toc [5])
 \tf@toc=\write8
 \openout8 = `main.toc'.
 
 ) [6]
 \openout2 = `introduction/introduction.aux'.
 
- (./introduction/introduction.tex
+
+(./introduction/introduction.tex
 Underfull \hbox (badness 10000) in paragraph at lines 7--9
 
  []
@@ -1239,7 +1249,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--26
 
  []
 
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 53.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 52.
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )) [1
@@ -1270,7 +1280,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--36
 
  []
 
-[3] <images/logos.png, id=310, 536.0025pt x 176.66pt>
+[3] <images/logos.png, id=270, 536.0025pt x 176.66pt>
 File: images/logos.png Graphic file (type png)
  <use images/logos.png>
 Package pdftex.def Info: images/logos.png used on input line 73.
@@ -1295,9 +1305,9 @@ Package pdftex.def Info: images/elaastic_blue.pdf used on input line 38.
 
 
 ]
-Overfull \hbox (1.82202pt too wide) in paragraph at lines 67--70
+Overfull \hbox (6.11748pt too wide) in paragraph at lines 67--70
 \T1/cmr/m/n/10.95 Web-DAV afin de pou-voir dé-poser des cours dans les dif-fére
-nts for-mat d'-ex-por-ta-tion disponibles. 
+nts for-mats d'-ex-por-ta-tion disponibles. 
  []
 
 [6]
@@ -1340,8 +1350,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 66--68
  []
 
 
-Overfull \hbox (2.92683pt too wide) in paragraph at lines 69--72
-[]\T1/cmr/m/n/10.95 J'ai en-suite im-plé-manté une struc-ture de par-cours du c
+Overfull \hbox (2.32239pt too wide) in paragraph at lines 69--72
+[]\T1/cmr/m/n/10.95 J'ai en-suite im-plé-menté une struc-ture de par-cours du c
 ours qui va rem-plir le \T1/cmtt/m/n/10.95 MarkupBuilder
  []
 
@@ -1380,7 +1390,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 169--179
 
  []
 
-[11] <images/diffusion.png, id=383, 925.4575pt x 638.385pt>
+[11]
+Overfull \hbox (54.43153pt too wide) in paragraph at lines 180--194
+\T1/cmr/m/n/10.95 férentes im-plé-men-ta-tions : \T1/cmtt/m/n/10.95 ImsCourseEx
+porter\T1/cmr/m/n/10.95 , \T1/cmtt/m/n/10.95 PdfCourseExporter\T1/cmr/m/n/10.95
+ , \T1/cmtt/m/n/10.95 OnlineSlideShowCourseExporter\T1/cmr/m/n/10.95 ,
+ []
+
+<images/diffusion.png, id=342, 925.4575pt x 638.385pt>
 File: images/diffusion.png Graphic file (type png)
 
 <use images/diffusion.png>
@@ -1396,45 +1413,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 237--247
  []
 
 
-Underfull \vbox (badness 4096) has occurred while \output is active []
+Underfull \vbox (badness 2343) has occurred while \output is active []
 
  [12]
 [13 <./images/diffusion.png>]) [14]
-\openout2 = `chapters/companyAssessment.aux'.
-
- (./chapters/companyAssessment.tex
-Chapitre 4.
-[15
-
-
-
-] [16]) [17] [18]
 \openout2 = `chapters/personalAssessment.aux'.
 
  (./chapters/personalAssessment.tex
-Chapitre 5.
-[19
+Chapitre 4.
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--33
+
+ []
+
+) [15
 
 
 
-] [20] [21] [22]) [23] [24
+] [16
 
 
-]
-\openout2 = `conclusion/conclusion.aux'.
-
- (./conclusion/conclusion.tex) [25
+] (./main.gls [17
 
 
-] (./main.gls
-[44
-
-
-
-
-] [45
-
-]) [46]
+]) [18]
 \@nomenclaturefile=\write9
 \openout9 = `main.nlo'.
 
@@ -1444,62 +1446,52 @@ Writing nomenclature file main.nlo
 \tf@lof=\write10
 \openout10 = `main.lof'.
 
- [47
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 54.
+ [19
 
 
-] [48
-
-] (./main.lot)
-\tf@lot=\write11
-\openout11 = `main.lot'.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 65.
- [49]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 65.
- (./main.aux (./covers/coverpage.aux)
-(./covers/titlepage.aux) (./preamble/thanks.aux) (./preamble/toc.aux)
-(./introduction/introduction.aux) (./chapters/contexte.aux)
-(./chapters/subject.aux) (./chapters/work.aux)
-(./chapters/companyAssessment.aux) (./chapters/personalAssessment.aux)
-(./conclusion/conclusion.aux) (./annexes/annexe1.aux) (./annexes/annexe2.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 65.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 65.
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 54.
+ (./main.aux (./covers/coverpage.aux) (./covers/titlepage.aux) (./preamble/than
+ks.aux) (./preamble/toc.aux) (./introduction/introduction.aux) (./chapters/cont
+exte.aux) (./chapters/subject.aux) (./chapters/work.aux)
+(./chapters/personalAssessment.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 54.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 54.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: A8576FE816E484A2871570818093BC64;2861.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
+(rerunfilecheck)             Checksum: DE091EDF2C8F6C3103EA61979220C9E4;2423.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 54.
  ) 
 Here is how much of TeX's memory you used:
- 22104 strings out of 495034
- 363844 string characters out of 6181677
- 589469 words of memory out of 5000000
- 24615 multiletter control sequences out of 15000+600000
+ 22050 strings out of 495034
+ 362984 string characters out of 6181677
+ 588647 words of memory out of 5000000
+ 24607 multiletter control sequences out of 15000+600000
  25895 words of font info for 62 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,12n,57p,1733b,603s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{section.2.3} has been referenced but does not exi
-st, replaced by a fixed one
-
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/s
-hare/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-d
-ist/fonts/type1/public/cm-super/sfbx0900.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/cm-super/sfbx1095.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/cm-super/sfbx1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/cm-super/sfbx1440.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-su
-per/sfbx2488.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfc
-c1095.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0700.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/cm-super/sfrm2488.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/cm-super/sfsl1095.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/cm-super/sfti1095.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/cm-super/sftt0900.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/cm-super/sftt1095.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvet
-ic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on main.pdf (39 pages, 502513 bytes).
+ 60i,12n,57p,1737b,603s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr
+/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf
+-dist/fonts/type1/public/cm-super/sfbx0900.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/cm-super/sfbx1095.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/cm-super/sfbx1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/cm-super/sfbx1440.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-
+super/sfbx2488.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/s
+fcc1095.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0700
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/cm-super/sfrm2488.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/cm-super/sfsl1095.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/cm-super/sfti1095.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/cm-super/sftt0900.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/cm-super/sftt1095.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helv
+etic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
+>
+Output written on main.pdf (27 pages, 475671 bytes).
 PDF statistics:
- 557 PDF objects out of 1000 (max. 8388607)
- 485 compressed objects within 5 object streams
- 98 named destinations out of 1000 (max. 500000)
- 398 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 461 PDF objects out of 1000 (max. 8388607)
+ 401 compressed objects within 5 object streams
+ 81 named destinations out of 1000 (max. 500000)
+ 342 words of extra memory for PDF output out of 10000 (max. 10000000)
 

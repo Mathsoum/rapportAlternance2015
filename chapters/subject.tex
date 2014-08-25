@@ -2,14 +2,14 @@
 Ayant intégré une équipe travaillant sur un projet existant, je n'ai pas réalisé
 un travail de mon côté mais plutôt ajouté de nouvelles fonctionnalités à ce
 projet. C'est pourquoi ce chapitre reprend les différentes fonctionnalités que
-j'ai développé après une petite introduction du projet global.
+j'ai développées après une petite introduction du projet global.
 
 \section{Elaastic}
 Elaastic est un outil pour concevoir et diffuser des contenus pédagogiques. Il
 permet de concevoir des supports pédagogiques structurés, interactifs et
 indépendants du format de destination. Il offre la possibilité de diffuser ces
 supports sous forme de diaporama ou sous forme de publication au format livre ou
-au format site intéractif dans un \gloss{ent} ou un \gloss{lms}.
+au format site interactif dans un \gloss{ent} ou un \gloss{lms}.
 
 Les cours créés avec Elaastic sont organisés en arbre sur trois niveaux :
 \begin{itemize}
@@ -22,15 +22,15 @@ Les cours créés avec Elaastic sont organisés en arbre sur trois niveaux :
 	\end{itemize}
 \end{itemize}
 
-Des resources comme des images ou des documents externes peuvent être ajoutés à
+Des ressources comme des images ou des documents externes peuvent être ajoutés à
 ces cours pour les enrichir. Nous verrons également qu'il est maintenant
-possible d'ajouter des questions intéractives en tant qu'unité de cour.\\
+possible d'ajouter des questions interactives en tant qu'unité de cour.\\
 
 D'un point de vue technique, Elaastic se découpe en deux parties. Une partie
-Grails pour la corps et la partie \gloss{back-end}. Le système de persistence
+Grails pour le corps et la partie \gloss{back-end}. Le système de persistance
 des données est assurée par Mongo pour la version de développement. La version
 déployée en production s'appuie sur une base de données Postgre SQL. Côté
-\gloss{front-end}, l'interface utilisateur est conçu grace à AngularJS, un
+\gloss{front-end}, l'interface utilisateur est conçu grâce à AngularJS, un
 framework Javascript.
 
 \begin{figure}[h]
@@ -50,7 +50,7 @@ en arbre -- chapitre, section, sous-section par exemple -- défini par l'IMS
 GLC\footnote{IMS Global Learning Consortium}. Cette structure correspond aux
 cours créé avec Elaastic et s'adapte bien en format d'exportation. Une des
 motivations à fournir ce format d'exportation était que ce format est compris
-par Moodle, plateforme utilisé par Franck et John dans leur activité
+par Moodle, plateforme utilisée par Franck et John dans leur activité
 d'enseignement. Une fois le package généré, il peut être directement importé
 dans Moodle.
 
@@ -59,51 +59,51 @@ existant la possibilité d'exporté un cours créé avec Elaastic au format IMS
 Content Packaging.
 
 \subsection{WebDAV}
-\Gloss{webdav} est un protocole déchange et d'édition collaborative de fichier.
+\Gloss{webdav} est un protocole d'échange et d'édition collaborative de fichier.
 Là encore, la motivation était l'intégration à d'autres LMS comme Moodle. En
-effet, Moodle peut être configuré pour récupérer se connecter à es serveurs
+effet, Moodle peut être configuré pour récupérer se connecter à des serveurs
 WebDAV pour récupérer ou déposer des fichiers.
 
 L'objectif de cette fonctionnalité était de permettre à l'utilisateur de
 configurer un serveur WebDAV afin de pouvoir déposer des cours dans les
-différents format d'exportation disponibles.
+différents formats d'exportation disponibles.
 
 \subsection{Artifact}
 Un problème qui est apparu avec la complexification des exportations est le
 temps que met l'application à générer ces documents. Un système de cache a été
 imaginé pour ne pas avoir à réexporter des cours qui n'aurais pas été modifiés
-entre deux exportation. Ces cours généré une première fois dans un format donné
+entre deux exportations. Ces cours généré une première fois dans un format donné
 correspondent à un artéfact ({\em artifact} en anglais).
 
-Mon travail sur les artéfact a été de définir la structure d'un artéfact pour la
-persistence des données et de mettre en en place le système de cache afin de ne
+Mon travail sur les artéfacts a été de définir la structure d'un artéfact pour la
+persistance des données et de mettre en en place le système de cache afin de ne
 pas utiliser du temps processeur inutilement et fournir un service plus rapide
 quand cela est possible.
 
 \subsection{Diffusion}
 Un des objectifs d'Elaastic est de pouvoir diffuser des cours dans plusieurs
-formats afin que d'autres personnes -- notemment les étudiants -- puisse y
+formats afin que d'autres personnes -- notamment les étudiants -- puisse y
 accéder en dehors des cours. C'est pourquoi il a fallu définir ce qu'était une
 diffusion d'un point de vu technique et comment l'intégrer à l'application. Une
-première version simple d'une diffusion est de permet d'accéder à un cours dans
+première version simple d'une diffusion permet d'accéder à un cours dans
 une version donnée dans les formats d'exportation disponibles.
 
-Mon travail sur ce point à été de créer une page contenant une diffusion pour un
-cour particulier regroupant les différents formats disponible dans lesquels le
+Mon travail sur ce point a été de créer une page contenant une diffusion pour un
+cours particulier regroupant les différents formats disponibles dans lesquels le
 cours est disponible.
 
 \subsection{Question interactive}
-Franck a travaillé sur Tsaap-Notes, un outils de micro-blogging pour la prise de
+Franck a travaillé sur Tsaap-Notes, un outil de micro-blogging pour la prise de
 note collaborative durant les cours magistraux. Cet outil permet de créer des
-notes dans un format de questions intéractives auxquelles les étudiants
+notes dans un format de questions interactives auxquelles les étudiants
 répondent en temps réel durant les cours.
 
 Dans une optique de couplage de ce système de prise de note collaborative avec
-les cours créés depuis Elaastic, il faudrait que l'utilisateur puissent créé des
-unités de cour dans ce format de question intéractive.
+les cours créés depuis Elaastic, il faudrait que l'utilisateur puissent créer des
+unités de cour dans ce format de question interactive.
 
-Mon travail sur les questions intéractives a été de rendre possible la saisie par
-l'utilisateur d'une unité de cours spéciale qui sera une question intéractive.
+Mon travail sur les questions interactives a été de rendre possible la saisie par
+l'utilisateur d'une unité de cours spéciale qui sera une question interactive.
 Les questions seront rédigées au format Moodle GIFT puis analysées et converties
 pour l'intégration dans les formats d'exportations.
 
@@ -114,25 +114,25 @@ faire suivre et à mettre à jour au fur et à mesure de l'avancement des tâche
 Pour la gestion de projet et du code source nous utilisions Jira et Git de
 manières très couplées. Jira nous permet de découper et d'organiser le travail à
 faire et les anomalies détectées. Ainsi nous avions des {\em stories}, des tâche
-et sous-tâches, ou des bugs. Il attribut à chaque élément un identifiant unique
-de la forme EL-XXX\footnote{EL étant l'abbréviation du projet et XXX un numéro
+et sous-tâches, ou des bogues. Il attribue à chaque élément un identifiant unique
+de la forme EL-XXX\footnote{EL étant l'abréviation du projet et XXX un numéro
 unique}.
 
 Là où le couplage avec Git intervient, c'est au niveau du nommage des branches.
 Nous organisions chaque branche de développement en fonction de l'élément Jira
 auquel elle faisait référence. Ainsi, chaque branche correspondait à une et une
 seule story. De plus, nous gardions dans cet identifiant dans les messages de
-commits pour permettre de déscendre au niveau de la tâche ou de la sous-tâche
+commits pour permettre de descendre au niveau de la tâche ou de la sous-tâche
 quand des précisions sur celle ci était nécessaire.\\
 
-Une fois le développement de la fonctionnalité terminé, les tests correspondants
+Une fois le développement de la fonctionnalité terminée, les tests correspondants
 écrits et validés et le code nettoyé, la branche passait en {\em \og to review
 \fg{} } sur notre tableau Kanban. Une nouvelle branche Git était alors créée
-avec l'historique des commits nettoyé. Cette branche reprennait le nom de la
+avec l'historique des commits nettoyé. Cette branche reprenait le nom de la
 précédente et contenait en plus le marqueur \og ready \fg{}.
 
 Une fois le code revu par John, il me faisait des retours sur ce qu'il avait pu
-noté. J'apportais ensuite les modifications retenues et je mettais à jour la
+noter. J'apportais ensuite les modifications retenues et je mettais à jour la
 branche Git correspondante pour l'intégration à la branche principale de
 développement.\\
 
@@ -141,21 +141,21 @@ faisions des \og daily meeting \fg{} avec John et Vincent afin de tenir compte d
 travail fait la journée passée et de ce sur quoi nous allions travailler pour la
 journée à venir.\\
 
-Un dernier point sur la démarche de travail que je vais abordé ici est la phase
+Un dernier point sur la démarche de travail que je vais aborder ici est la phase
 de test. Pour chaque fonctionnalité développée, une contrainte de validation
 était l'écriture de tests pour une couverture de code optimale. Pour vérifier
 cette couverture de code, nous utilisions le plugin de couverture de code
 fournit avec IntelliJ IDEA.
 
-Pour l'écriture des tests -- ou plus précisemment des spécifications -- nous
+Pour l'écriture des tests -- ou plus précisément des spécifications -- nous
 avons utilisé le framework Spock. C'est un framework pour écrire des
-spécification. Il permet de spécifier le comportement de chaque méthode d'une
+spécifications. Il permet de spécifier le comportement de chaque méthode d'une
 classe dans une classe de test -- spécification. Ce framework permet de faire
-des tests sur le comportement de la classe testée en simulant ses intéractions
+des tests sur le comportement de la classe testée en simulant ses interactions
 avec de faux objets, des \gloss{mock}. Pour faire cela, il nous permet de suivre
 le principe du \og given, when, then \fg{}. Ce principe consiste à spécifier un
-état de base -- given -- à lui appliquer un stimuli, un appel de fonction sur un
+état de base -- given -- à lui appliquer un stimulus, un appel de fonction sur un
 objet réel par exemple -- when -- et à vérifier que les différentes
-intéractions fonctionnent et que l'objet réel a bien changé d'état -- then.
+interactions fonctionnent et que l'objet réel a bien changé d'état -- then.
 
 

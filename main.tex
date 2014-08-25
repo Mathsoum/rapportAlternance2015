@@ -16,11 +16,7 @@
   chapters/contexte,
   chapters/subject,
   chapters/work,
-  chapters/companyAssessment,
   chapters/personalAssessment,
-  conclusion/conclusion,
-  %annexes/annexe1,
-  %annexes/annexe2
 }
 
 \begin{document}
@@ -38,18 +34,13 @@
 \include{chapters/contexte}
 \include{chapters/subject}
 \include{chapters/work}
-\include{chapters/companyAssessment}
 \include{chapters/personalAssessment}
 
 \cleardoublepage% le corps du document est terminé
 
-\include{conclusion/conclusion}
-
 \appendix
 
 \pagestyle{back}
-\include{annexes/annexe1}
-\include{annexes/annexe2}
 
 \printglossary[title=Glossaire et acronymes]
 
@@ -59,8 +50,6 @@
 
 \listoffigures
 \addcontentsline{toc}{chapter}{Table des figures}
-\listoftables
-\addcontentsline{toc}{chapter}{Liste des tableaux}
 
 \end{document}
 
