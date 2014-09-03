@@ -5,13 +5,12 @@ une section propre et sera développée en suivant le schéma suivant :
 \begin{itemize}
   \item Recherche et analyse
   \item Solution mise en \oe uvre
-  \item 
 \end{itemize}
-
-Je n'aborderai pas ici la phase de test car je l'ai développée dans la partie
-démarche méthodologique. En effet, cette phase est la même pour chaque
+\vspace{10px}
+Je n'aborderai pas ici la phase de test car je l'ai développée dans la section
+\ref{methodo} \nameref{methodo}. En effet, cette phase est la même pour chaque
 fonctionnalité développée. Je préfère donc me concentrer ici sur l'analyse et
-les solutions apportées pour chaque fonctionnalité. %TODO lien
+les solutions apportées pour chaque fonctionnalité.
 \section{IMS}
 \subsection{Recherche et analyse}
 Dans un premier temps, il m'a fallu me renseigner sur cette norme que je ne
@@ -83,7 +82,7 @@ correspondant au contenu de l'unité. Cet attribut lie les deux éléments et
 permettra de retrouver le contenu de l'unité lors de la lecture du paquetage par
 une application tierce.\\
 
-Viens enfin la partie correspondant aux ressources. Les ressources sont les
+Vient enfin la partie correspondant aux ressources. Les ressources sont les
 fichiers de contenu de chaque unité de cours au format HTML. Les noms de ces
 ressources doivent correspondre à ceux renseignés dans les balises {\tt <item>}
 des unités de cours.\\
@@ -106,17 +105,17 @@ l'utilisateur dans une réponse HTTP en précisant {\tt application/zip} comme
 \section{WebDAV}
 \subsection{Recherche et analyse}
 Comme pour l'IMS Content Packaging, il m'a d'abord fallu me renseigner sur ce
-qu'était WebDAV.
+qu'était \gloss{webdav}.
 
-WebDAV est une extension du protocole HTTP. Il comprend un ensemble de nouvelles
+\gloss{webdav} est une extension du protocole HTTP. Il comprend un ensemble de nouvelles
 méthodes qui s'utilisent avec le protocole HTTP. Ces méthodes permettent de
-créer, modifier et supprimer des fichiers sur le serveur WebDAV. Elles
+créer, modifier et supprimer des fichiers sur un serveur \gloss{webdav}. Elles
 permettent aussi de consulter/modifier les propriétés de ces fichiers. Un
 système de gestion de version est aussi disponible via des commandes de verrou
-sur les fichiers pour protéger des écritures concurrentes.
+sur les fichiers pour protéger d'éventuelles écritures concurrentes.
 
 Avant tout, j'ai cherché si un plugin Grails n'existait pas déjà gérant les
-échange WebDAV. Et il s'est avéré qu'un tel plugin existe sur un dépôt Maven. Or
+échange \gloss{webdav}. Et il s'est avéré qu'un tel plugin existe sur un dépôt Maven. Or
 nous utilisons le système de dépendance de Maven pour les dépendances de notre
 projet. Ce plugin s'appelle Sardine, est codé en Java et est disponible sur
 GitHub\footnote{\url{https://github.com/lookfirst/sardine}}. J'ai donc enquêté
@@ -127,10 +126,10 @@ pu recueillir m'ont convaincu quant à l'utilisation de ce plugin.
 \subsection{Solution mise en \oe uvre}
 Pour cette fonctionnalité, j'ai développé un service Grails qui interface le
 plugin Sardine et fournit des méthodes pour créer, mettre à jour, supprimer
-des fichiers sur un serveur WebDAV.
+des fichiers sur un serveur \gloss{webdav}.
 
 Pour tester le bon fonctionnement de cette fonctionnalité, j'ai également mis en
-place un serveur WebDAV sur ma machine.\\
+place un serveur \gloss{webdav} sur ma machine.\\
 
 Cependant, d'autres fonctionnalités prioritaires étaient à développer et
 intégrer avant celle-ci. Mon travail est donc dans une branche du git en
@@ -158,7 +157,8 @@ Pour la mise en place de cette solution, il y a deux étapes.\\
 
 La première étape est de créer la classe du domaine {\tt Artifact} qui
 correspond aux champs qui seront stockés en base et aux contraintes sur ces
-paramètres comme la contrainte d'unicité exposée plus haut. Ensuite, j'ai créé
+paramètres comme la contrainte d'unicité exposée plus haut. Ensuite, il faut
+créer
 une classe {\tt ArtifactService} de service Grails qui assure les échanges
 transactionnels avec la base de données. Cette classe suit les mécaniques
 CRUD\footnote{{\bf C}reate {\bf R}ead {\bf U}pdate {\bf D}elete} de
@@ -174,20 +174,21 @@ ce format existe en base, on peut directement le renvoyer à l'utilisateur avec
 le bon {\tt ContentType}. Par contre, si aucun artéfact ne correspond en base,
 on doit effectuer la transformation. Une fois cette transformation effectuée, on
 stocke le binaire généré en base avec le cours, sa version et le format
-correspondant. Ainsi, à la prochaine demande, l'élément sera dans un \og cache
+correspondant. Ainsi, à la prochaine demande, l'élément sera dans le \og cache
 \fg{} et récupéré directement.\\
 
 Le développement de cette deuxième partie a montré une duplication de code avec
-l'intégration de ce système de cache. En effet, le code est le même pour chaque
-exporteur. Nous avons donc mis en place un système plus générique au niveau des
+l'intégration de ce système de cache. En effet, la partie de code pour la mise
+en cache est la même pour chaque
+exporteur. Nous avons donc mis en place un système plus générique directement au niveau des
 exporteurs. La factorisation de ces exporteurs nous a permis d'isoler une classe
 abstraite principale {\tt CourseExporter} et différentes implémentations : {\tt
 ImsCourseExporter}, {\tt PdfCourseExporter}, {\tt
 OnlineSlideShowCourseExporter}, etc. De plus, nous avons mis en place une \og
-factory \fg{} pour la création de ses exporteurs. Cette factory ajoute en
-fonction des besoins des décorateurs pour l'export au format zip ou la mise en
+factory \fg{} pour la création de ces exporteurs. Cette factory ajoute, en
+fonction des besoins, des décorateurs pour l'export au format zip ou la mise en
 cache. Ces décorateurs implémentent eux aussi la classe abstraite {\tt
-CourseExporter} Ainsi, nous nous retrouvons avec une seule classe {\tt
+CourseExporter}. Ainsi, nous nous retrouvons avec une seule classe {\tt
 ZipCourseExporter} et une seule classe {\tt CacheCourseExporter}. En les
 connectant, on peut mettre en cache et empaqueter dans une archive zip
 n'importe quel format d'exportation avant de le livrer à l'utilisateur.
@@ -196,24 +197,24 @@ n'importe quel format d'exportation avant de le livrer à l'utilisateur.
 \subsection{Recherche et analyse}
 La possibilité de diffuser un cours est une des fonctionnalités capitales
 d'Elaastic. Cette diffusion permettra aux étudiants d'accéder à des versions en
-\og lecture seule \fg{} de ces cours dans les différents formats disponibles à
-l'exportation. Une diffusion correspondra donc à un cours dans une version
-particulière. Avec ce système en place, on peut rapidement imaginé une charge
+\og lecture seule \fg{} des cours dans les différents formats disponibles à
+l'exportation. Une diffusion correspond donc à un cours dans une version
+particulière. Avec ce système en place, on peut rapidement imaginer une charge
 importante sur le serveur lorsque plusieurs groupes d'étudiants voudront
 récupérer la même version d'un cours en particulier. C'est avec des échelles
 comme celle-là que l'importance du système de cache avec les artéfacts se
 justifie pleinement.
 
-Les diffusions seront stockées en base correspondant à un cours, sa version, un
+Les diffusions seront stockées en base. Chaque entrée correspondra à un cours, sa version, un
 nom d'affichage, un nom normalisé pour l'URL et un type de diffusion. Pour
 l'instant, nous n'avons défini qu'un seul type de diffusion : {\tt
-ELAASTIC\_SIMPLE}. C'est celui mentionné d'ici là dans ce document. Il permet de
+ELAASTIC\_SIMPLE}. Il permet de
 récupérer un cours dans une version particulière et dans les formats disponibles
 à l'exportation.
 
 \subsection{Solution mise en \oe uvre}
 Mon travail sur cette fonctionnalité a principalement été de mettre une interface
-sur \og externe \fg{} à l'éditeur pour obtenir un cours dans un des formats
+\og externe \fg{} à l'éditeur pour obtenir un cours dans un des formats
 d'exportation. J'ai donc créé un contrôleur Grails, {\tt PlayerController}, qui
 se charge de formater la sortie de la diffusion en fonction de la requête de
 l'utilisateur. Avec ce contrôleur, j'ai ajouté les entrées correspondantes dans
@@ -270,8 +271,8 @@ des statistiques ou des retours pour les utilisateurs, que pour un PDF où chaqu
 
 \subsection{Solution mise en place}
 Pour rendre la saisie de question possible, j'ai ajouté un type d'élément de
-cour. Ces types sont renseignés dans l'énumération {\tt ElementType}. Chaque
-élément de cour est de type {\tt ElementType}. La distinction se fait au niveau
+cours. Ces types sont renseignés dans l'énumération {\tt ElementType}. Chaque
+élément de cours est de type {\tt ElementType}. La distinction se fait au niveau
 des exporteurs qui traitent les sections/sous-sections différemment des unités
 et maintenant des questions. Ainsi, lors de l'export d'un élément de type {\tt
 QUESTION}, le plugin Tsaap-Questions est appelé pour convertir cette question

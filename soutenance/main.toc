@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.32pt}
+\select@language {french}
+\beamer@sectionintoc {1}{\scshape Contexte}{3}{0}{1}
+\beamer@sectionintoc {2}{\scshape Outils et m\IeC {\'e}thodologie}{9}{0}{2}
+\beamer@sectionintoc {3}{\scshape Fonctionnalit\IeC {\'e}s}{15}{0}{3}
+\beamer@sectionintoc {4}{\scshape Bilan}{35}{0}{4}
