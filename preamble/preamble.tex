@@ -13,7 +13,73 @@
 \usepackage{makeidx}
 \usepackage[nopostdot,nonumberlist,toc]{glossaries}
 \usepackage{nomencl}
+\usepackage{tabularx}
+ \usepackage{ifthen}
 \usepackage[Lenny]{fncychap}
+
+\author{Mathieu SOUM}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\makeatother
+
+\newcommand{\bigtitle}{Participation au développement d'une application Java EE}
+\newcommand{\shorttitle}{dédiée à la conception et à la diffusion de supports pédagogiques}
+\newcommand{\tuteur}{Sébastien RICHE}
+\newcommand{\encadrant}{Isabelle FERRAN\'E}
+\newcommand{\coverfoot}{Master 2 -- Développement Logiciel / 2014 - 2015}
+
+\newcommand{\coverpage}[1]{%
+\newgeometry{top=2cm,left=2cm,bottom=2cm,right=1cm}
+\begin{titlepage}
+\parindent=0pt
+\begin{tabular}[h]{l@{ : }l}
+  Tuteur & \tuteur \\
+  Encadrant & \encadrant
+\end{tabular}
+\ifthenelse{\equal{#1}{cover}}%
+{\vspace{1.5cm}}%
+{\vspace{3.5cm}}
+\begin{center}
+\ifthenelse{\equal{#1}{cover}}
+{
+  \includegraphics[scale=0.9]{images/aboard.png}%
+}{}
+\end{center}
+\vspace{2cm}
+\hrulefill
+\begin{center}\bfseries\Huge
+  \bigtitle
+\end{center}
+\hrulefill
+\begin{center}\bfseries\Large
+  \shorttitle
+\end{center}
+\vspace*{0.5cm}
+\begin{center}\bfseries\Large
+  \theauthor
+\end{center}
+\vspace*{0.2cm}
+\begin{center}\bfseries
+  Stage du 3 mai 2014 au 31 juillet 2015\\Chez Aboard Engineering
+\end{center}
+\vfill
+\ifthenelse{\equal{#1}{cover}}
+{
+\begin{tabular}[h]{m{5.7cm}m{5.7cm}m{5.7cm}}
+\includegraphics[scale=0.45]{images/aboard.png} &
+\includegraphics[scale=0.55]{images/ups.png} &
+\includegraphics[scale=0.55]{images/mdl.png} \\
+\end{tabular}
+\vspace{1.2cm}
+}{}
+\begin{flushright}
+  \coverfoot
+\end{flushright}
+\end{titlepage}
+\restoregeometry
+}
 
 \makeindex
 
