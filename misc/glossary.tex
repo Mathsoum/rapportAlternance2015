@@ -1,136 +1,59 @@
-\newglossaryentry{imscp}
+\newglossaryentry{mbd}
   {
-	name=Paquetage de Contenu IMS,
-	symbol=Paquetage de Contenu IMS,
+	name=MDB,
+	symbol=MDB,
 	description=
 	{
-	  (ou IMS Content Packaging) est un format de paquet de contenu créé par
-	  l'IMS Global Learning Consortium. C'est un format standardisé qui permet
-	  l'échange -- import, export, etc. -- de contenu entre différents systèmes
-	  reconnaissant ce format là. Nous l'utiliseront car c'est un des format à
-	  partir duquel Moodle sait importer un cours.
+	  {\bf M}odel {\bf B}ased {\bf D}esign. Utiliser notamment dans des application
+	  automobiles, aérospatiale ou pour de l'informatique industrielle, MDB est un
+	  méthode mathématique et visuelle pour comprendre et résoudre des problème
+	   complexes de système de contrôle, de traitement du signal ou des systèmes
+	   communicants. Elle est beaucoup utilisée pour des logiciels embarqués.
 	}
 }
-
-\newglossaryentry{paas}
+\newglossaryentry{rtw}
   {
-	name=PaaS,
-	symbol=PaaS,
+	name=RTW-EC\up{\circledR},
+	symbol=RTW-EC\up{\circledR},
 	description=
 	{
-	  ({\bf P}latform {\bf a}s {\bf a} {\bf S}ervice). Service cloud offrant une
-	  plateforme et plusieurs solutions logicielles accessible à distance. Il
-	  suit la logique des service fournit via le cloud comme les SaaS ou les
-	  IaaS.
-    }
+	  {\bf R}eal-{\bf T}ime {\bf W}orkshop-{\bf E}mbedded {\bf C}oder\up{\circledR}.
+	  Aujourd'hui renommé Simulink Coder\up{\texttrademark}. Outil de génération de code
+	  C et C++ à partir de diagrammes Simulink\up{\circledR}. Le code généré peut-être
+	  utiliser pour des applications temps réel et hors temps réel, notamment pour le
+	  prototypage rapide.
+	}
 }
-
-\newglossaryentry{ide}
+\newglossaryentry{rtos}
   {
-	name=IDE,
-	symbol=IDE,
+	name=OS temps réel,
+	symbol=RTOS,
 	description=
 	{
-	  ({\bf I}ntegrated {\bf D}evelopment {\bf E}nvironment). Logiciel facilitant
-	  la création et la gestion de code source, le plus souvent au sein de
-	  projets correspondant à un logiciel cible particulié.
+	  ({\bf R}eal {\bf T}ime {\bf O}perating {\bf S}ystem en anglais). Système d'exploitation
+	  multi-tâches destinée aux applications temps réel. Il facilite la création d'un système
+	  temps réel via des ordonnances de tâches spécialisés afin de fournir aux développeurs
+	  des systèmes temps réel les outils et les primitives nécessaires pour produire un
+	  comportement temps réel souhaité dans le système final.
 	}
-  }
-
-\newglossaryentry{saas}
+}
+\newglossaryentry{orianne}
   {
-	name=SaaS,
-	symbol=SaaS,
-	description={
-	  ({\bf S}oftware {\bf a}s {\bf a} {\bf S}ervice). Logiciel disponible de
-	  manière distante via un service de cloud computing. Le entrées et sorties
-	  de l'application transitent à travers le réseau entre le client et le
-	  serveur hôte du logiciel. Tout le calcul est effectué à distance et est
-	  transparent pour le client.
+	name=Orianne,
+	symbol=Orianne,
+	description=
+	{
+	  //TODO <acronym>. Plateforme de prototypage rapide de fonctions de contrôle moteur. Voir \ref{sec:orianne} pour plus de détails.
 	}
-  }
-
-\newglossaryentry{back-end}
+}
+\newglossaryentry{qgen}
   {
-	name=Back end,
-	symbol=back end,
-	description={
-	  Pour un logiciel informatique correspond à la partie qui fait office
-	  d'interface entre le logiciel et les applications et bibliothèques tierces
-	  qui sont invisible pour l'utilisateur -- à l'opposé du \gloss{front-end}.
+	name=QGen,
+	symbol=QGen,
+	description=
+	{
+	  Générateur open source de code embarqué temps réel en C et Ada à partir de modèles
+	  Matlab\up{\textregistered} Simulink\up{\textregistered}. Son développement est piloté par
+	  la société AdaCore.
 	}
-  }
-
-\newglossaryentry{front-end}
-  {
-	name=Front end,
-	symbol=front end,
-	description={
-	  Pour un logiciel informatique correspond à la partie qui fait office
-	  d'interface entre le corps du logiciel et l'utilisateur. Ça correspond le
-	  plus souvent à l'interface utilisateur (graphique ou non) -- à l'opposé du
-	  \gloss{back-end}.
-	}
-  }
-
-\newglossaryentry{ent}
-  {
-	name=ENT,
-	symbol=ENT,
-	description={
-	  ({\bf E}space {\bf N}umérique de {\bf T}ravail). 
-	  Plateforme de travail qui permet aux enseignant de diffuser des contenus
-	  de cours ou des exercices aux étudiants en fonction de leur groupe, de
-	  leur options, etc.
-	}
-  }
-
-\newglossaryentry{lms}
-  {
-	name=LMS,
-	symbol=LMS,
-	description={
-	  ({\bf L}earning {\bf M}anagement {\bf S}ystem). Equivalent d'ENT.
-	}
-  }
-
-\newglossaryentry{webdav}
-  {
-	name=WebDAV,
-	symbol=WebDAV,
-	description={
-	  ({\bf Web D}istributed {\bf A}uthoring and {\bf V}ersioning) est une
-	  extension du protocole HTTP qui facilite le partage et l'édition
-	  collaborative entre utilisateurs. Il permet de faire des opérations de
-	  création/édition/suppression de fichiers sur des dépôts partagés par
-	  plusieurs utilisateurs tout en gérant les différentes versions de ces
-	  documents au moyen de vérrous. Il permet également une gestion des droits
-	  d'accès aux fichiers.
-	}
-  }
-
-\newglossaryentry{zip}
-  {
-	name=ZIP,
-	symbol=zip,
-	description={
-	  est un format d'archive normalizé contenant une arborescence de
-	  fichiers/répertoires compréssés selon un algorithme de compression sans
-	  perte de données.
-	}
-  }
-
-\newglossaryentry{mock}
-  {
-	name=Mock objects,
-	symbol=mock objects,
-	description={
-	  (littéralement faux objets). Ce sont des objets dont leur comportement
-	  (corps de fonction, valeurs retournées, valeurs des attributs, etc.) sont
-	  entièrement simulés pour tester des intéractions avec d'autre objets réel
-	  en atttendant des résultats connus puisque simulés sans pour autant avoir
-	  à connaître une implémentation de ces faux objets.
-	}
-  }
-
-
+}

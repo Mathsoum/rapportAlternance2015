@@ -1,7 +1,10 @@
 \chapter{Présentation du sujet}
-\lipsum
+Aboard Engineering étant une entreprise spécialisée dans les domaines de l'informatique embarquée, les problématiques logicielles qu'elle rencontre sont liées au matériel sur lequel sera déployé le code développé. Pour facilité ce type de développement, les concepteurs de logiciels embarqués se tourne de plus en plus vers des outils de \gloss{mbd} qui permet d'utiliser des langages de haut niveau -- souvent graphiques -- pour la conception et la spécification des systèmes à développés. On peut citer par exemple Matlab\up{\circledR} Simulink\up{\circledR} qui est un outil permettant de définir graphiquement sous forme de schéma logique le fonctionnement de systèmes complexes. C'est d'ailleurs l'outil utilisé par Aboard Engineering pour définir ses fonctions de contrôle moteur. L'avantage des ces modèle est multiple. Premièrement, les outils de \gloss{mbd} permettent de simuler l'exécution du système afin de vérifier son fonctionnement. Ensuite, ces outils embarque généralement un générateur de code afin de générer le code correspondant à ces modèles, allégeant grandement le travail des concepteurs et évitant au maximum les erreurs faites lors de développement \og manuel\fg{}. En reprenant l'exemple de Matlab\up{\circledR} Simulink\up{\circledR}, la suite intègre un générateur de code embarqué temps réel appelé \gloss{rtw}. Il génère aujourd'hui le code des prototypes de fonctions de contrôle moteur développés par l'équipe. J'y reviendrai dans la section \ref{sec:rtw} plus en détail.
 
-\section{La génération de code embarqué (Matlab RTW/EC)}
+Comme dit précédemment, la génération de code facilite le travail de conception et de réalisation de prototype. Cependant, pour pouvoir compiler le code de plusieurs modules différents en une seule application, il reste des étapes à réaliser. C'est ici que la plateforme de prototypage rapide \gloss{orianne} entre en jeu. C'est son rôle de mettre en relation ces modules et de créer la \og glue \fg{} entre tous les composants. 
+
+\section{La génération de code embarqué (Matlab\up{\circledR} \gloss{rtw} vs. \gloss{qgen})}
+\label{sec:rtw}
 \lipsum
 
 \section{Les outils de la plateforme}
