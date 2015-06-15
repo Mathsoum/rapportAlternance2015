@@ -60,11 +60,48 @@ Matlab\up{\circledR} couvrant toute la suite nécessaire à l'ensemble du
 processus de production n'est pas négligeable et compte pour beaucoup dans les
 charges liées à un projet.\\
 
-C'est pourquoi nous nous sommes tourné vers une alternative libre en cours de
-développement : \gloss{qgen}.
+La problématique est alors de retrouver les même garanties de performance et de
+qualité du code produit par Matlab\up{\circledR} sans le coût exorbitant
+qu'engendre l'achat de licences. C'est pourquoi Aboard Enginnering a décidé de
+se tourner vers une alternative libre : \gloss{qgen} et \gloss{projectp}.
 
 \subsection{\gloss{qgen}}
+A la base de \gloss{qgen}, on trouve un projet open source appelé
+\gloss{projectp}. Le but du projet P est de supporter le \gloss{mbd} pour des
+système temps réel embarqués en fournissant un framework de generation de code
+open source capable de :
+\begin{enumerate}
+  \item vérifier l'intégrité d'un point de vue sémantique de sèstème conçus avec
+	différents langages de modélisation (Matlab\up{\circledR}
+	Simuling\up{\circledR}, Scicos, Xcos, SysML, MARTE, UML) ;
+  \item générer du code source optimizé pour des langages de programmation
+	(Ada, C/C++) et des alngages de synthèse (VHDL, SystemC) ;
+  \item supporter des processus de certification de différents domaines
+	(avionique, spacial, automobile).
+\end{enumerate}
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.3]{images/projectp}
+  \caption{Project P -- Source : {\tt http://www.open-do.org/projects/p/}}
+  \label{fig:projectp}
+\end{figure}
+
+Parmis les collaborateurs à ce projet, on trouve des grands groupes industriels
+(Airbus, Astrium, Continental, Rockwell Collins, Safran, Thales) des PME
+(AdaCore, Altair, Scilab Enterprise, STI), des sociétés de services (ACG, Aboard
+Engineering, Atos Origins) mais aussi des centres de recherche (CNRS, ENPC,
+INRIA, ONERA).\\
+
+À partir de ça, AdaCore a développé un produit commercial à partir des
+technologies développées dans \gloss{projectp} : \gloss{qgen}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.2]{images/qgen}
+  \caption{QGen -- Source AdaCore}
+  \label{fig:qgen}
+\end{figure}
 
 \section{Les outils de la plateforme}
 \lipsum
