@@ -23,10 +23,10 @@ reviendrai dans la section \ref{sec:rtw} plus en détail.
 Comme dit précédemment, la génération de code facilite le travail de conception
 et de réalisation de prototype. Cependant, pour pouvoir compiler le code de
 plusieurs modules différents en une seule application, il reste des étapes à
-réaliser. C'est ici que la plateforme de prototypage rapide \gloss{orianne}
+réaliser. C'est ici que la plateforme de prototypage rapide Orianne
 entre en jeu. C'est son rôle de mettre en relation ces modules et de créer la
 \og glue \fg{} entre tous les composants.\\
-\Gloss{orianne} est composée de plusieurs parties que nous appellerons \og
+Orianne est composée de plusieurs parties que nous appellerons \og
 composants \fg{}. Je détaillerai les composants présents lors de mon arrivée
 ainsi que ceux sur lesquelq j'ai travaillé dans la section \ref{sec:rtw}.
 
@@ -64,7 +64,7 @@ qualité du code produit par Matlab\up{\circledR} sans le coût exorbitant
 qu'engendre l'achat de licences. C'est pourquoi Aboard Enginnering a décidé de
 se tourner vers une alternative libre : \gloss{qgen} et \gloss{projectp}.
 
-\subsection{\gloss{qgen}}
+\subsection{QGen}
 A la base de \gloss{qgen}, on trouve un projet open source appelé
 \gloss{projectp}. Le but du projet P est de supporter le \gloss{mbd} pour des
 système temps réel embarqués en fournissant un framework de generation de code
@@ -103,44 +103,48 @@ technologies développées dans \gloss{projectp} : \gloss{qgen}.
 \end{figure}
 
 \section{Les outils de la plateforme}
-La plateforme \ref{orianne} est développée en Java. Le projet est composé de plusieurs modules pour séparer les différents outils.
+La plateforme Orianne est développée en Java. Le projet est composé de plusieurs modules pour séparer les différents outils.
 Deux principaux modules séparent la partie IHM qui sert à la configuration des outils d'une part et les générateurs de code d'autre part.
 \subsection{La partie IHM}
 La partie IHM s'organise sous forme d'onglets correspondant à la configuration de chaque outils (cf. figure \ref{fig:palteforme}). 
 \begin{description}
   \item[Configuration moteur] Cette partie permet de configurer les éléments relatifs à un moteur. Le type de carburant, de combustion, d'injection, les fonctions à intégrer dans l'application finale.
   \item[Configuration fonctions] Chaque fonction cochée dans le premier onglet, peut être configurée dans le deuxième onglet. Les fonctions sont donc configurable via des éléments graphiques comme des cases à cocher, des champs texte ou des liste déroulantes.
-  \item[Configuration \gloss{rtos}] Cet onglet reprend les différences fonctions triées par leur récurences sous forme de tableau. Chaque ligne représente un point d'entrée d'une fonction de contrôle moteur. L'ordre est significatif et peut être modifié via des boutons. L'ordre des fonctions dans cette table sera répercuté dans le fichier source de configuration du \gloss{rtos}.
-  \item[Configuration \gloss{ecu} \& \gloss{rte}] Cette section fait le lien entre les \gloss{api} fournies par les pilotes du calculateur moteur et les variables d'entrée/sortie des fonctions de l'application. En configurant les capteurs et actionneurs du calculateur avec leur donnée (variables), la plateforme permet de faire la correspondance entre ces variables et les données consommées par les différentes focntions de l'applciation.
-  \item[Configuration \gloss{can}] L'\gloss{ecu} n'est pas le seul calculateur dans un véhicule. La communication entre ces différentes unités se fait génréalement via un bus \gloss{can}. L'onglet \gloss{can} permet de configurer les différentes cellules de communication et accepte des fichiers XML représentant les différents messages à envoyer sur une cellule définie. L'interface permet également de faire correspondre les signaux réçus ou envoyés à des variables de l'application en entrée ou en sortie des fonctions.
+  \item[Configuration RTOS] Cet onglet reprend les différences fonctions triées par leur récurrences sous forme de tableau. Chaque ligne représente un point d'entrée d'une fonction de contrôle moteur. L'ordre est significatif et peut être modifié via des boutons. L'ordre des fonctions dans cette table sera répercuté dans le fichier source de configuration du RTOS.
+  \item[Configuration \gloss{ecu} \& \gloss{rte}] Cette section fait le lien entre les API fournies par les pilotes du calculateur moteur et les variables d'entrée/sortie des fonctions de l'application. En configurant les capteurs et actionneurs du calculateur avec leur donnée (variables), la plateforme permet de faire la correspondance entre ces variables et les données consommées par les différentes focntions de l'application.
+  \item[Configuration CAN] L'\gloss{ecu} n'est pas le seul calculateur dans un véhicule. La communication entre ces différentes unités se fait généralement via un bus CAN. L'onglet CAN permet de configurer les différentes cellules de communication et accepte des fichiers XML représentant les différents messages à envoyer sur une cellule définie. L'interface permet également de faire correspondre les signaux réçus ou envoyés à des variables de l'application en entrée ou en sortie des fonctions.
 \end{description}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[scale=0.2]{images/plateforme}
-  \caption{Plateforme \gloss{orianne}, configuration moteur (capture du 17 juin 2015)}
-  \label{fig:plateforme}
-\end{figure}
 
 \subsection{La partie génération}
-L'interface de la plateforme a un menu regroupant les différentes actions de génération possible via la plateforme.
+L'interface de la plateforme a un menu regroupant les différentes actions de génération possible via la plateforme (cf figure \ref{fig:toolsMenu}).
 \begin{description}
-  \item[Génération \gloss{can}] Cette action crée deux fichiers source {\tt.c} et {\tt .h} reprenant la configuration de la communication \gloss{can}.
-  \item[Génération \gloss{rtos}] Cette action reprend les liste des points d'entrée des fonctions de l'application en fonction de leur place dans la configuration.
-  \item[Génération \gloss{rte}] Cette action crée deux fichiers source {\tt.c} et {\tt .h} déclarant l'ensemble des entrées/sorties des fonctions qui seront échangées entre les différents modules. Elle génère aussi les fonctions d'accès en lecture et en écriture des données fournies par les pilotes du calculateur moteur.
-  \item[Génération \gloss{orianne}] Cette action met en place les fichiers aux emplacements requis pour la compilation d'une application complète. Elle copie les sources générées par la plateforme et celles importées depuis la génération de code des modèles Simulink \up{\circledR}.
+  \item[Génération CAN] Cette action crée deux fichiers source {\tt.c} et {\tt .h} reprenant la configuration de la communication CAN.
+  \item[Génération RTOS] Cette action reprend les liste des points d'entrée des fonctions de l'application en fonction de leur place dans la configuration.
+  \item[Génération RTE] Cette action crée deux fichiers source {\tt.c} et {\tt .h} déclarant l'ensemble des entrées/sorties des fonctions qui seront échangées entre les différents modules. Elle génère aussi les fonctions d'accès en lecture et en écriture des données fournies par les pilotes du calculateur moteur.
+  \item[Génération Orianne] Cette action met en place les fichiers aux emplacements requis pour la compilation d'une application complète. Elle copie les sources générées par la plateforme et celles importées depuis la génération de code des modèles Simulink \up{\circledR}.
   \item[Compilation] Cette action lance la compilation via le compilateur définie dans la configuration de la plateforme.
-  \item[Génération \gloss{a2l}] Cette action génère le fichier A2L servant d'index des variables dans la mémoire du calculateur.
+  \item[Génération A2L] Cette action génère le fichier A2L servant d'index des variables dans la mémoire du calculateur.
 \end{description}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[scale=0.2]{images/toolsMenu}
-  \caption{Plateforme \gloss{orianne}, menu Tools (capture du 17 juin 2015)}
-  \label{fig:plateforme}
+  \includegraphics[scale=0.7]{images/toolsMenu}
+  \caption{Plateforme Orianne, menu Tools (capture du 17 juin 2015)}
+  \label{fig:toolsMenu}
 \end{figure}
 
 \subsection{La problématique}
 
-La problématique autour de cette plateforme est que tous ces outils ne sont pas encore créés. Afin que la plateforme garde une stabilité, les générateurs non implémentés sont transformés par la copie de fichiers génériques. Ces fichiers doivent ensuite être modifiés à la main pour correspondre aux besoins de l'application conçue via la plateforme. Ainsi, les fichiers sont en place pour faciliter la compilation d'une application. L'utilisateur n'a alors plus qu'à modifier les fichiers dont il a besoin et de lancer la compilation de l'application.
-Les outlis manquant à la plateforme sont la génération CAN et la génération RTE. Il faudra donc développer les interfaces graphiques et les générateur de source correspondants.
+La problématique autour de cette plateforme est que tous ces outils ne sont pas encore créés.
+
+Afin que la plateforme garde une stabilité, les générateurs non implémentés sont transformés par la copie de fichiers génériques embarqués en dur dans la plateforme. Ces fichiers doivent ensuite être modifiés à la main pour correspondre aux besoins de l'application conçue via la plateforme. Ainsi, les fichiers sont en place pour faciliter la compilation d'une application. L'utilisateur n'a alors plus qu'à modifier les fichiers dont il a besoin et de lancer la compilation de l'application.
+
+Les outils manquant à la plateforme sont la génération CAN et la génération RTE. Il faudra donc développer les interfaces graphiques et les générateur de source correspondants. La prise en compte de ces nouveaux outils aura un impact sur les autres outils comme par exemple la génération RTOS qui devra prendre en compte les nouveaux point d'entrée de la communication CAN dont la structure pourra changer pas rapport à leur ancienne version.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[angle=-90, scale=0.5]{images/plateforme}
+  \caption{Plateforme Orianne, configuration moteur (capture du 17 juin 2015)}
+  \label{fig:plateform}
+\end{figure}
+
