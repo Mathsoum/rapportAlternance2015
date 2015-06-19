@@ -1,18 +1,128 @@
 \chapter{Travail réalisé}
-<Introduction éventuelle>
+J'ai travaillé sur ces deux projets en parallèle à cause de l'organisation du travail sur QGen.
+Lorsque AdaCore livrait une nouvelle version de QGen, nous effectuions les différents tests 
+de performances que nous pouvions faire et nous leur retournions nos résultat. Cependant,
+entre deux livraisons, nous ne pouvions pas faire de tests supplémentaires. C'est pourquoi
+j'ai travaillé sur ces deux projet simultanément.
 
 \section{Génération de code embarquée}
-\subsection{Qu'est-ce que QGen ?}
-\subsection{Pourquoi QGen (par rapport à RTW/EC) ?}
-\subsection{Le processus de génération}
-\subsection{Les premiers résultats}
-\subsection{Les étapes d'amélioration}
+Afin de faciliter les tests d'une nouvelle application générée via QGen, j'ai créé des scripts pour automatiser la compilation.
+Ainsi, à chaque livraison d'une nouvelle version du générateur, il suffisait de lancer la série de script pour
+compiler une application complète.
 
-\section{Outils de prototypage}
+La première étape était d'analyser le code généré par RTW-EC\up{\circledR} pour avoir une base de comparaison
+sachant que ce code là est actuellement utilisé.
+Pour cela, j'ai utilisé un analyseur statique de code appelé OCLint.
+C'est un outil open source d'analyse statique de code C/C++ qui ne fournit de binaire que pour Linux 64 bits.
+C'est pourquoi j'ai installé une Fedora sur une machine virtuelle. J'ai donc essentiellement travaillé sous Linux pour cette partie.
+
+Une seconde étape a été de tester une application complète avec l'intégralité du code généré par RTW-EC\up{\circledR} remplacé par le code généré par QGen.
+Pour cela, j'ai utilisé une application complète existante et ai remplacé le code généré.
+Cette étape a été bien plus fastidieuse que la première. En effet, la plate-forme Orianne se base sur le code généré par RTW-EC\up{\circledR} pour créer la \og glue \fg{}
+entre les composants. Dans ce sens, il m'a fallu adapté le code généré par QGen de sorte que ses interfaces (points d'entrées, connexion avec les API
+de l'ECU, etc.) soient compatible avec une application basée sur du code RTW-EC\up{\circledR}.
+Pour cela j'ai modifié à la main un composant pour voir les modifications nécessaires et ensuite, j'ai construit une série de scripts python pour automatiser
+le processus à tous les composants et ne pas avoir à faire toutes ces modifications à la main à chaque nouvelle génération.
+
+Une fois une application complète générée, je l'ai déployé dans un calculateur sur une table de tests afin de pouvoir mesurer les temps d'exécution.
+Pour cela, j'ai utilisé une sortie digitale de l'ECU que je montais au début de la tâche et descendais à la fin. Ainsi, je pouvais visualiser un signal carré à l'oscilloscope
+représentant le temps d'exécution de la tâche ainsi que sa récurrence.
+
+\subsection{Les premiers résultats}
+%Analyse statique
+La première analyse a montré que les deux codes générés étaient équivalent en terme d'analyse statique. Nous n'avons pas tenu rigueur
+des critères de bonne pratique d'écriture de code C. \'Etant du code généré, nous n'irons pas le modifier à la main -- où en de
+très rare cas, ce n'est pas l'objectif de la génération de code. Le code RTW-EC\up{\circledR} a une plus grande complexité cyclomatique mais cela est du au générateur
+qui ne créer qu'une seule fonction de calcul alors que QGen créer plusieurs fichiers sources par modules et découpe ses traitements.
+
+%Perf sur table
+La où les deux générateurs se sont démarqué, c'est au moment des tests d'une application complète.
+Premièrement, nous avons analysé l'empreinte mémoire d'une fonction particulière. Dans le cas de l'application QGen, 
+l'empreinte mémoire était deux fois supérieure à celle de l'application RTW-EC\up{\circledR}.
+
+Ce résultat s'est confirmé lors du passage sur table de test. Le temps d'exécution était lui aussi deux fois supérieur
+pour l'application QGen. Nous passions de $400\mu{}s$ d'exécution pour RTW-EC\up{\circledR} à $800\mu{}s$ pour QGen.
+Des temps de calculs qui semble négligeables au premier abord. Mais une telle augmentation suffisait à mettre en
+défaut le système temps réel qui n'arrivait plus à lancer toutes les tâches à leur correcte récurrence et qui
+n'exécutait même plus certaines fonctions. Un problème qu'il faudra régler pour que le code généré soit viable.
+
+\subsection{Les étapes d'amélioration}
+Après analyse du code généré, nous avons remarqué que les fonctions d'extrapolation lors de recherche de correspondance dans les tables de calibration
+n'était pas les même entre RTW-EC\up{\circledR} et QGen. Nous avons identifié un gain de performance potentiel à ce niveau là.
+
+Après discussion avec AdaCore, ils ont revus ces fonctions ainsi que les options d'optimisations de leur générateur afin
+de, par exemple, réduire le nombre de variables intermédiaire entre la traduction des différents blocs Simulink\up{\circledR}
+et utiliser la même variable en sortie d'un bloc et en en entrée d'un autre si ces deux blocs sont reliés de manière simple et directe.
+Ces amélioration ont à la fois réduit le temps de calcul des méthodes (essentiellement avec la modification des fonctions de recherche
+et d'extrapolation dans les tables de calibration) mais aussi réduit l'impact du code en mémoire.
+
+Après ces modifications, nous retombions sur des empreintes mémoires équivalentes entre les applications RTW-EC\up{\circledR} et QGen.
+Cependant, il restait encore un écart d'environ $200\mu{}s$ au niveau du temps d'exécution.
+
+\subsection{La première version majeure}
+Sur la dernière partie des tests que nous avons effectué, nous nous concentrions sur une seule fonction, la plus significative en terme de performance dans notre application.
+Afin d'aider AdaCore dans leur recherche d'amélioration, nous avons envoyé notre code généré par RTW-EC\up{\circledR} ainsi que par QGen avec les modèles nécessaires à cette génération pour ladite fonction.
+Au fur et à mesure de leur recherches, ils nous faisaient parvenir une nouvelle version du code généré pour notre composant afin de l'intégrer rapidement dans notre application et de tester les dernières évolutions.
+Au terme de plusieurs cycles, nous sommes parvenu à une équivalence entre le temps d'exécution des deux applications. Une grande avancée qui aboutira à la livraison d'une première version majeure courant juin.
+Une fois cette livraison effectuer, nous pourront reprendre une application complète pour voir la viabilité de ce nouveau générateur dans un contexte concret, d'abord sur table de test et ensuite, si les résultats sont concluant, sur véhicule.
+
+\section{plate-forme Orianne}
+Pour la partie du travail sur la plate-forme Orianne, j'ai repris du code existant.
+La première étape a donc été d'analyser le code existant pour comprendre
+l'architecture de la plate-forme et identifier les interfaces sur lesquelles se
+connecter pour développer de nouveaux outils.
+
+\subsection{L'existant}
+La plate-forme était construite sur une architecture de composants \gloss{osgi} où chaque module de génération était
+indépendant, connecté à un composant de référence qui définissait l'IHM. Je ne trouvais pas pertinent ce choix d'architecture
+dans la mesure où l'application ne pouvait se lancer que si tous les composants étaient présent. L'aspect dynamique
+qu'apporte la plate-forme OSGi n'était pas du tout exploitée.
+
+Après discussion avec mes collègues, nous avons constaté que l'utilisation la plate-forme OSGi n'avais pas d'intérêt suffisant et ajoutait de la complexité
+dans le développement. De plus, le découpage des composant n'était très optimisé introduisant de la redondance dans le code ce qui
+freine le développement et la maintenance. Nous avons donc décidé de migrer ces composants vers une unique application Java gérée
+avec \gloss{maven} afin de mieux identifier les améliorations possibles et faciliter la factorisation du code redondé.
+
+On peut citer par exemple la configuration relative à un projet édité par la plate-forme qui était passée de composant en composant en fonction des actions demandées par l'utilisateur. Ce qui était réellement passé en paramètre n'était pas des objets sérialisés représentant les données de configuration mais un chemin vers le fichier principal de configuration du projet. Ce fichier XML était relu par chaque composant qui traduisait alors les données en objets Java. Or l'ajout d'un nouvel outil entraîne -- avec une forte probabilité -- la changement de ce fichier de configuration. Un changement même mineur devait être répercuté sur chaque outil afin de garder une cohérence dans la gestion de la configuration des projets dans tous les outils. Une surcharge de travail qui en plus induit une perte au niveau des performances par des accès disque inutile et des traitements réalisés plusieurs fois sans raison valable.
+
+Ensuite, toujours dans une optique de factorisation du code afin d'améliorer la maintenabilité de l'application et éliminer la duplication de code, j'ai commencé à regrouper les classes d'interface graphiques basée sur la bibliothèque Swing. J'ai trouvé plusieurs portions de code commune qui pourrait être abstraites pour faciliter le développement de nouvelles vues pour de futurs outils. De telles classes graphiques abstraites aide à garder une cohérence dans les différentes vues sans avoir à s'en soucier à chaque nouveau développement.
+
+Heureusement, les IDE modernes sont des outils très puissants qui peuvent nous aider dans les tâches de factorisation et d'optimisation de code. C'est pourquoi j'ai pris la liberté d'installer sur ma machine un outil comme IntelliJ avec lequel je suis familier et qui me permet de factoriser du code de façon sûre et efficace.
+
 \subsection{La génération CAN}
-\paragraph{L'existant}
-\paragraph{La factorisation}
-\paragraph{L'intégration}
-\subsection{Les autres outils}
-\paragraph{La partie RTE}
-\paragraph{La partie A2L}
+Le premier outil que j'ai eu a développé a été le générateur de la partie communication CAN de l'application. Là encore, j'ai repris un générateur existant qui produisait du code C pas suffisamment performant au niveau mémoire pour le calculateur cible. Il a donc fallu reprendre les modèles de code existant -- aussi appelés \og templates \fg{} -- et de les modifiés pour générer du code moins volumineux, identifier les données et variables superflues, adapter les structures de données pour être plus compactes. La modification des modèles de code a forcément entrainé une modification du générateur de code. Je l'ai repris quasiment dans son intégralité, là aussi pour des raisons de factorisation, de duplication de code et de complexité non optimisée.
+
+La configuration CAN est basée sur des fichiers XML de description des différents messages et signaux envoyés et reçues sur le bus avec les variables de l'application associées à ces signaux. Afin d'optimiser les accès à ces données, j'ai mis en place un système de cache qui garde en mémoire les données extraites des fichiers de configuration et facilite l'accès via des sous-ensemble pour récupérer facilement et rapidement uniquement les messages envoyés sans les messages reçus par exemple. Ainsi, les algorithmes de génération ont gagné en clarté et les futurs ajouts au générateur nécessiteront moins de travail.
+
+Du côté des templates, je souhaitais modifié uniquement la gestion des données sans toucher aux algorithmes de traitement des trames qui sont des algorithmes complexes qui ont été testés et validés. De plus les modèles se basent déjà sur un systèmes de balises de la forme {\tt \textbackslash\$nom\_balise\$\textbackslash\- \ldots\- \textbackslash\$nom\_balise\$\textbackslash}, une séquence qu'on ne retrouve pas dans le langage et donc qui se détache bien du code C effectif dans le template. À l'intérieur de ces balise, on trouve des séquence du type {\tt \$variable\$}. Les premières représentent des blocs de code regroupés par sémantique ou parce qu'il seront généré plusieurs fois (déclaration et initialisation de variables par exemple). Les dernières seront remplacées par des valeurs calculées ou issues des fichiers XML. J'ai tenu à garder ce système en ajoutant mes propres balises et variables. Je trouvais le système intéressant et bien conçu. De plus, je n'ai ainsi pas eu à toucher aux algorithmes présents dans les templates et donc éviter des erreurs durant une migration éventuelle.\\
+J'ai ensuite cherché à identifier chaque structure de données à l'intérieur de ces templates pour voir leur pertinence et comment elles intervenaient dans la communication. J'ai alors pu constater par exemple que certaines données était générées car présente dans le XML de configuration mais inutilisés dans la communication CAN. J'ai aussi identifié un peu de redondance dans les données sur un point précis. Sur un bus CAN, la partie données de la trame peut être formatée selon deux formats : le format Intel ou le format Motorola. Dans le premier cas elles sont traitées comme deux mots de 32 bits et donc stockées dans un tableau à deux cases d'entiers 32 bits. Dans le second cas, elle sont traitées comme un tableau de 8 octets. Cependant, les données restent les mêmes. Pour éviter cette duplication, j'ai donc définie une {\tt union}, c'est une structure de données en C qui permet de représenter des données prenant la même place en mémoire mais qui seront lus de plusieurs manières différentes (dans notre cas un {\tt uint8[8]} et un {\tt uint32[2]} prennent tous les deux 64 bits en mémoire mais fournissent les données sous deux formats différents).
+
+Du côté du générateur en lui-même, j'ai repris le code existant pour l'organiser différemment. Le code était très linéaire et séquentiel ce qui engendrait beaucoup de modification dans le générateur en cas de modification des templates. J'ai donc extrait des fonctions afin d'identifier des similarités de comportement mais aussi d'améliorer la lecture du code. L'algorithme que j'ai mis en place remplace les blocs au fur et à mesure de la lecture du modèle par du code généré. Ainsi l'ajout, la suppression ou la modification d'une balise dans le template n'influe pas sur le traitement des autres balises.
+
+Côté performance, l'objectif était de prendre le moins de place possible dans la mémoire du calculateur. J'ai réussi à diviser par 7 l'espace mémoire utilisé. En contre partie, la configuration des trames -- qui sont des données statiques et constantes -- est stockée directement dans l'espace mémoire du calculateur avec le code compilé.\\
+
+La partie génération terminée, la prochaine tâche a été de créer un interface graphique à intégrer dans la plate-forme pour permettre une configuration plus agréable de la partie CAN en utilisant des formulaires et des tables pour faire correspondre les variables transmises sur le CAN avec les variables de l'application en entrée et en sortie des composants. J'ai utilisé la bibliothèque Swing -- déjà utilisée pour le reste de la plate-forme -- pour créer les différents composants graphiques lié à cette configuration. J'ai ensuite ajouté ces composant dans un nouvel onglet de la plate-forme (cf. figure \ref{fig:ihmcan}).
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.2]{images/ihmcan}
+  \caption{Partie CAN de l'interface graphique de la plate-forme}
+  \label{fig:ihmcan}
+\end{figure}
+
+
+\subsection{La partie RTE}
+La génération CAN n'est pas le seul outil manquant à la plate-forme. Ma prochaine tâche se tourne vers la partie RTE.
+Cette partie consiste à définir les liens entre le code interne à l'ECU (pilotes) et notre application. Pour cela, on se base sur les
+différents types d'entrée/sortie fournis par l'ECU. Les entrées/sorties sont définies dans un fichier de configuration XML
+propre à chaque ECU. C'est sur ce fichier là que nous allons nous baser pour la configuration RTE de l'application.
+
+Du point de vue utilisateur, la configuration RTE se découpe en 3 parties. La première est la saisie des capteurs
+et actionneurs, la deuxième est l'affectation des entrées/sorties de l'ECU aux entrées/sorties des composants
+via les capteurs et actionneurs définis précédemment et la troisième est le lien entre ces entrées/sorties et les
+variables des modules de l'application. Cela se traduira par 3 vues différentes dans l'application. Ces 3 étapes
+permettront de configurer le générateur qui génèrera les appels aux API pour interfacer les accès aux variables des capteurs de l'ECU.
+
+Je suis actuellement en cours de conception de l'interface et le développement du générateur se fera ensuite.
+

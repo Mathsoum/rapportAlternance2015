@@ -1,14 +1,14 @@
 \newglossaryentry{mbd}
   {
-	name=MDB,
-	symbol=MDB,
+	name=MBD,
+	symbol=MBD,
 	description=
 	{
-	  {\bf M}odel {\bf B}ased {\bf D}esign. Utiliser notamment dans des application
-	  automobiles, aérospatiale ou pour de l'informatique industrielle, MDB est un
-	  méthode mathématique et visuelle pour comprendre et résoudre des problème
-	   complexes de système de contrôle, de traitement du signal ou des systèmes
-	   communicants. Elle est beaucoup utilisée pour des logiciels embarqués.
+	  {\bf M}odel {\bf B}ased {\bf D}esign. Utilisé notamment dans des applications
+	  automobiles, aérospatiales ou pour de l'informatique industrielle, MBD est un
+	  méthode mathématique et visuelle pour comprendre et résoudre des problèmes
+	   complexes de système de contrôle, de traitement du signal ou de système
+	   communicant. Elle est beaucoup utilisée pour des logiciels embarqués.
 	}
 }
 \newglossaryentry{rtw}
@@ -20,7 +20,7 @@
 	  {\bf R}eal-{\bf T}ime {\bf W}orkshop-{\bf E}mbedded {\bf C}oder\up{\circledR}.
 	  Aujourd'hui renommé Simulink Coder\up{\texttrademark}. Outil de génération de code
 	  C et C++ à partir de diagrammes Simulink\up{\circledR}. Le code généré peut-être
-	  utiliser pour des applications temps réel et hors temps réel, notamment pour le
+	  utilisé pour des applications temps réel et hors temps réel, notamment pour le
 	  prototypage rapide.
 	}
 }
@@ -37,13 +37,26 @@
 	  comportement temps réel souhaité dans le système final.
 	}
 }
+\newglossaryentry{inca}
+  {
+	name=INCA,
+	symbol=INCA,
+	description=
+	{
+	  Logiciel de mesure et de calibration d'\gloss{ecu} via plusieurs protocoles de communication
+	  développé par ETAS. Il permet de modifier les calibrations d'une \gloss{ecu} et de vérifier
+	  que les changements au niveau des mesures sont corrects.
+	}
+}
 \newglossaryentry{orianne}
   {
 	name=Orianne,
 	symbol=Orianne,
 	description=
 	{
-	  //TODO <acronym>. Plateforme de prototypage rapide de fonctions de contrôle moteur. Voir \ref{sec:orianne} pour plus de détails.
+	  {\bf O}util numé{\bf RI}que pourme m{\bf A}quettage de fo{\bf N}ctions de co{\bf N}trole mot{\bf E}eur.
+	  Plate-forme de prototypage rapide de fonctions de contrôle moteur développée par Aboard Engineering. Voir \ref{sec:orianne}
+	  pour plus de détails.
 	}
 }
 \newglossaryentry{qgen}
@@ -63,7 +76,7 @@
 	symbol=Project P,
 	description=
 	{
-	  Project open source visant à réduire les coût des approches de
+	  Projet open source visant à réduire les coût des approches de
 	  développement \gloss{mbd} dans le cadre d'applications temps réel
 	  embarquées. Le projet comprend de grands groupe industriel comme de plus
 	  petites structure qui collaborent dans un but commun. Pour en savoir plus
@@ -76,7 +89,9 @@
 	symbol=ECU,
 	description=
 	{
-	  {\bf E}ngine {\bf C}ontrol {\bf U}nit
+	  {\bf E}ngine {\bf C}ontrol {\bf U}nit. Le boitier de contrôle moteur contenant des
+	  pilotes et API pour manipuler les entrées sorties du boitier. L'application de contrôle
+	  moteur sera déployé dans ce boitier et utilisera les pilotes de ce matériel pour interagir avec le moteur.
 	}
 }
 \newglossaryentry{rte}
@@ -85,7 +100,9 @@
 	symbol=RTE,
 	description=
 	{
-	  {\bf R} {\bf T} {\bf E}
+	  {\bf R}eal {\bf T}ime {\bf E}nvironment. Dans la plate-forme \gloss{orianne}, RTE
+	  correspond à l'application développée à partir du code généré. En comparaison à
+	  l'application gérant le matériel de l'\gloss{ecu} (pilotes, API, etc.).
 	}
 }
 \newglossaryentry{can}
@@ -94,6 +111,40 @@
 	symbol=CAN,
 	description=
 	{
-	  {\bf C}ontroller {\bf A}rea {\bf N}etwork
+	  Le bus CAN ({\bf C}ontroller {\bf A}rea {\bf N}etwork) est un bus système série
+	  très répandu dans beaucoup d'industries, notamment l'automobile. L'approche
+	  bus permet de faire du multiplexage plutôt que de la communication point-à-point.
+	}
+}
+\newglossaryentry{canalyzer}
+  {
+	name=CANalyzer,
+	symbol=CANalyzer,
+	description=
+	{
+	  Logiciel permettant de visualiser les trames émises et reçues sur un bus CAN développé par Vector. 
+	}
+}
+\newglossaryentry{osgi}
+  {
+	name=OSGi,
+	symbol=OSGi,
+	description=
+	{
+	  {\bf O}pen {\bf S}ervices {\bf G}ateway {\bf i}nitiative est une plate-forme de services
+	  fondée sur le langage Java qui permet de créer des composants dynamiques fournissant
+	  des services. Ces composants peuvent se connecter et se déconnecter \og à la volée
+	  \fg{} à la plate-forme.
+	}
+}
+\newglossaryentry{maven}
+  {
+	name=Maven,
+	symbol=Maven,
+	description=
+	{
+	  Maven est un outil pour la gestion de l'automatisation de production des projets logiciels
+	  Java. L'objectif recherché est de produire un logiciel à partir de se sources en optimisant
+	  les tâches réalisées à cette fin et en garantissant le bon ordre de fabrication.
 	}
 }
