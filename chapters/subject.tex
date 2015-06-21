@@ -117,14 +117,15 @@ La partie IHM s'organise sous forme d'onglets correspondant à la configuration 
 \end{description}
 
 \subsection{La partie génération}
-L'interface de la plateforme a un menu regroupant les différentes actions de génération possibles via la plateforme (cf figure \ref{fig:toolsMenu}).
+L'interface de la plateforme a un menu regroupant les différentes actions de
+génération possibles via la plateforme (cf figure \ref{fig:toolsMenu}).
 \begin{description}
   \item[Génération CAN] Cette action crée deux fichiers source {\tt.c} et {\tt .h} reprenant la configuration de la communication CAN.
   \item[Génération RTOS] Cette action reprend les listes des points d'entrée des modules de l'application en fonction de leur place dans la configuration.
   \item[Génération RTE] Cette action crée deux fichiers source {\tt.c} et {\tt .h} déclarant l'ensemble des entrées/sorties des fonctions qui seront échangées entre les différents modules. Elle génère aussi les fonctions d'accès en lecture et en écriture des données fournies par les pilotes du calculateur moteur par l'intermédiaire de pilotes.
   \item[Génération Orianne] Cette action met en place les fichiers aux emplacements requis pour la compilation d'une application complète. Elle copie les sources générées par la plateforme et celles importées depuis la génération de code des modèles Simulink\up{\circledR}.
   \item[Compilation] Cette action lance la compilation d'une application complète via le compilateur défini dans la configuration de la plateforme.
-  \item[Génération A2L] Cette action génère le fichier \gloss{a2l} servant de dictionnaire des variables dans la mémoire du calculateur.
+  \item[Génération \gloss{a2l}] Cette action génère le fichier A2L servant de dictionnaire des variables dans la mémoire du calculateur.
 \end{description}
 
 \begin{figure}[h]
@@ -135,11 +136,24 @@ L'interface de la plateforme a un menu regroupant les différentes actions de g�
 \end{figure}
 
 \subsection{La problématique}
-La problématique autour de cette plateforme est simple : tous les outils ne sont pas encore créés.
+La problématique autour de cette plateforme est simple : tous les outils ne sont
+pas encore créés.
 
-Afin que la plateforme garde une certaine stabilité, les générateurs non implémentés sont remplacés par une simple copie de fichiers génériques embarqués en dur dans la plateforme. Ces fichiers doivent ensuite être modifiés à la main pour correspondre aux besoins de l'application conçue via la plateforme. Ainsi, les fichiers sont en place pour faciliter la compilation d'une application. L'utilisateur n'a alors plus qu'à modifier les fichiers dont il a besoin et lancer la compilation.
+Afin que la plateforme garde une certaine stabilité, les générateurs non
+implémentés sont remplacés par une simple copie de fichiers génériques embarqués
+en dur dans la plateforme. Ces fichiers doivent ensuite être modifiés à la main
+pour correspondre aux besoins de l'application conçue via la plateforme. Ainsi,
+les fichiers sont en place pour faciliter la compilation d'une application.
+L'utilisateur n'a alors plus qu'à modifier les fichiers dont il a besoin et
+lancer la compilation.
 
-Parmi les outils manquant à la plateforme, je vais me concentrer sur la génération CAN et la génération RTE, les outils sur lesquels j'ai travaillé. Il faudra donc développer les interfaces graphiques et les générateur correspondants. La prise en compte de ces nouveaux outils aura un impact sur les autres outils comme par exemple la génération RTOS qui devra prendre en compte les nouveaux point d'entrée de la communication CAN dont la structure pourra changer pas rapport à leur ancienne version.
+Parmi les outils manquant à la plateforme, je vais me concentrer sur la
+génération CAN et la génération RTE, les outils sur lesquels j'ai travaillé. Il
+faudra donc développer les interfaces graphiques et les générateur
+correspondants. La prise en compte de ces nouveaux outils aura un impact sur les
+autres outils comme par exemple la génération RTOS qui devra prendre en compte
+les nouveaux points d'entrée de la communication CAN dont la structure pourra
+changer pas rapport à leur ancienne version.
 
 \begin{figure}[h]
   \centering
