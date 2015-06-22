@@ -1,0 +1,74 @@
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{block body alerted}{bg=normal text.bg!90!black}
+\setbeamercolor*{block body}{bg=normal text.bg!90!black}
+\setbeamercolor*{block body example}{bg=normal text.bg!90!black}
+\setbeamercolor*{block title alerted}{use={normal text,alerted text},fg=alerted text.fg!75!normal text.fg,bg=normal text.bg!75!black}
+\setbeamercolor*{block title}{bg=blue}
+\setbeamercolor*{block title example}{use={normal text,example text},fg=example text.fg!75!normal text.fg,bg=normal text.bg!75!black}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=red} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+ 
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\setbeamertemplate{footline}
+{%
+  \leavevmode%
+  \insertprogressbar
+  \hbox{\begin{beamercolorbox}[wd=.16\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm%
+	plus1fill,rightskip=.3cm,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}Mathieu Soum
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.70\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm%
+	plus1fil,center]{author in head/foot}%
+	\usebeamerfont{title in head/foot}Plateforme Orianne -- Prototypage rapide
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.24\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm%
+	plus1fil,center]{author in head/foot}%
+	\usebeamerfont{frame number in head/foot}\insertframenumber
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\setbeamertemplate{navigation symbols}{}
+
+\renewcommand{\(}{\begin{columns}}
+\renewcommand{\)}{\end{columns}}
+\newcommand{\<}[1]{\begin{column}{#1}}
+\renewcommand{\>}{\end{column}}
+
+\definecolor{lightgr}{rgb}{0.85 0.85 1}
+
+\newcommand{\insertprogressbar}{%
+  \begin{minipage}{0.92\textwidth}
+	\color{lightgr}
+	%\rule{\beamer@leftmargin}{2pt}%
+	\vspace*{-15px}
+	% First frame nothing
+	% TODO
+	% During presentation
+	%\hspace{\dimexpr
+	%  -1\dimexpr\beamer@rightmargin+\textwidth\relax/\beamer@endpageofdocument
+	%}
+	\rlap{\rule{\dimexpr
+	  (\beamer@startpageofframe-1)\dimexpr
+	  \multiply\textwidth\relax\divide(\beamer@endpageofdocument - 1)}{1.5pt}}
+	% Last frame full
+
+	\vspace{0\baselineskip}
+	{}
+  \end{minipage}
+}
