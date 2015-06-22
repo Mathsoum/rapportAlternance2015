@@ -1,6 +1,6 @@
 #! /bin/zsh
 
-pdflatex $1
+#pdflatex $1
 makeglossaries $1
 pdflatex $1
-pdflatex $1
+#pdflatex $1

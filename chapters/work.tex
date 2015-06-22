@@ -146,18 +146,28 @@ repris du code existant. Il a fallu me familiariser avec la plateforme et son
 architecture. La première étape a donc été d'analyser ce code pour identifier
 les interfaces sur lesquelles se connecter pour développer de nouveaux outils.
 
-\subsection{L'existant //TODO WIP Correction}
+Il manque actuellement deux composants majeurs à la pateforme : la génération
+CAN et la génération RTE. La génération CAN se charge de gérer la communication
+de l'application sur un bus CAN à l'interieur du véhicule. La génération RTE
+comprend la définition entre les modules -- leurs entrées/sorties -- et les
+capteurs et actionneurs accessibles via l'ECU. C'est également dans la partie
+RTE que nous configurerons le \og basic software \fg{} -- c'est-à-dire le
+microgiciel embarqué dans l'ECU définissant les pilotes et API fournis par cette
+ECU -- et ainsi couplerons complètement notre application avec le matériel sur
+lequel elle sera déployée.
+
+\subsection{L'existant}
 La plateforme était construite sur une architecture de composants \gloss{osgi}
 où chaque module de génération était indépendant, connecté à un composant de
 référence qui définissait l'IHM. Je ne trouvais pas pertinent ce choix
 d'architecture dans la mesure où l'application ne pouvait se lancer que si tous
-les composants étaient présent. L'aspect dynamique qu'apporte la plateforme
-OSGi n'était pas du tout exploité.
+les composants étaient présents. L'aspect dynamique qu'apporte la plateforme
+OSGi n'était pas du tout exploitée.
 
 Après discussion avec mes collègues, nous avons constaté que l'utilisation la
 plateforme OSGi n'avait pas d'intérêt suffisant et ajoutait de la complexité
 dans le développement. De plus, le découpage des composants n'était pas très
-optimisé, introduisant de la redondance dans le code ce qui freine le
+optimisé, introduisant de la redondance dans le code, ce qui freine le
 développement et la maintenance. Nous avons donc décidé de migrer ces composants
 vers une unique application Java gérée avec \gloss{maven} afin de mieux
 identifier les améliorations possibles et faciliter la factorisation du code
@@ -189,7 +199,7 @@ Heureusement, les IDE modernes sont des outils très puissants qui peuvent nous
 aider dans les tâches de factorisation et d'optimisation de code. C'est pourquoi
 j'ai pris la liberté d'installer sur ma machine un outil comme IntelliJ avec
 lequel je suis familier et qui me permet de factoriser du code de façon sûre et
-efficace.
+efficace.\\
 
 Nous allons maintenant nous concentrer sur le premier outil que j'ai eu à
 intégrer dans cette plateforme. Il s'agit de l'outil de génération du code
@@ -217,9 +227,11 @@ code a forcément entrainé une modification du générateur de code. Je l'ai re
 quasiment dans son intégralité, là aussi pour des raisons de factorisation, de
 duplication de code et de complexité non optimisée.
 
-Les objectifs étaient donc de réduire la consommation mémoire du code C
-généré et de gagner en modularité et en clarté dans le code du générateur.
-Une fois ces deux points éclaircis, il faudra intégrer le générateur à la
+Les objectifs étaient donc de réduire l'utilisation mémoire du code C
+généré pour la communication CAN et de gagner en modularité et en clarté dans le
+code du générateur. Une fois ces deux points éclaircis, il faudra intégrer le
+générateur à la plateforme. Cependant, le complètement de ces objetifs est
+primordiale pour avoir une outil viable et fonctionnel avant l'intégration de la
 plateforme.
 
 La configuration CAN est basée sur des fichiers XML de description des
@@ -285,22 +297,30 @@ agréable de la partie CAN en utilisant des formulaires et des tables pour faire
 correspondre les variables transmises sur le CAN avec les variables de
 l'application en entrée et en sortie des composants. J'ai utilisé la
 bibliothèque Swing -- déjà utilisée pour le reste de la plateforme -- pour
-créer les différents composants graphiques lié à cette configuration. J'ai
+créer les différents composants graphiques liés à cette configuration. J'ai
 ensuite ajouté ces composant dans un nouvel onglet de la plateforme (cf. figure
-\ref{fig:ihmcan}).
+\ref{fig:ihmcan_conf} et \ref{fig:ihmcan_signal}).
 
 
 \begin{figure}[h]
  \centering
- \includegraphics[scale=0.2]{images/ihmcan}
- \caption{Partie CAN de l'interface graphique de la plateforme}
- \label{fig:ihmcan}
+ \centerline{\includegraphics[scale=0.47]{images/ihmcan_conf}}
+ \caption{Interface de configuration des bus CAN utilisés par l'application.}
+ \label{fig:ihmcan_conf}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \centerline{\includegraphics[scale=0.47]{images/ihmcan_signal}}
+  \caption{Interface de configuration des signaux CAN (vue des signaux de
+  sortie).}
+  \label{fig:ihmcan_signal}
 \end{figure}
 
 
 \subsection{La partie RTE}
 La génération CAN n'est pas le seul outil manquant à la plateforme. Ma
-prochaine tâche se tourne vers la partie RTE.  Cette partie consiste à définir
+prochaine tâche se tourne vers la partie RTE. Cette partie consiste à définir
 les liens entre le code interne à l'ECU (pilotes) et notre application. Pour
 cela, on se base sur les différents types d'entrée/sortie fournis par l'ECU. Les
 entrées/sorties sont définies dans un fichier de configuration XML propre à
@@ -316,7 +336,40 @@ traduira par 3 vues différentes dans l'application. Ces 3 étapes permettront d
 configurer le générateur qui génèrera les appels aux API pour interfacer les
 accès aux variables des capteurs de l'ECU.
 
-Je suis actuellement en cours de conception de l'interface et le développement
-du générateur se fera ensuite.
+Je suis actuellement en cours de conception de l'interface graphique. Comme pour
+la partie CAN, elle a vocation à faciliter la configuration de l'application via
+des éléments graphiques simples (formulaires, tables, etc.). 
+Elle doit s'articuler autour de la configuration possible de l'ECU afin de
+fournir le maximum de détails à l'utilisateur tout en restant cohérente avec le
+processus de configuration. Par exemple, il faudra que l'utilisateur définisse
+les capteurs et actionneurs qu'il souhaite utiliser avant de définir la laison
+des données de ces composants avec les paramètres des modules de l'application.
+L'IHM doit être construite pour que cet enchaînement de tâche se fasse de la
+manière la plus naturelle et la plus intuitive possible.  Il faudra ensuite
+développer le générateur basé sur cette IHM qui créera le code relatif à cette
+configuration et adaptera la \og glue \fg{} pour prendre en compte ce nouveau
+code.
+
+
+\subsection*{}
+La partie CAN est à présent terminée, l'interface est complète et le générateur
+fonctionnel. Il est désormais possible de configurer et généré le code relatif à
+la communicaiton CAN entièrement depuis l'interface graphique de la plateforme.
+
+La partie RTE est en pleine conception et le développement devrait démarrer
+sous peu. Les spécifications ne sont pas figées
+encore mais nous avons les premiers prototypes de l'IHM (cf. figure
+\ref{fig:rte_conf}). Ils vont nous permettre
+de simuler une utilisation de l'outil et de voir les améliorations éventuelles
+ou modifications nécessaires dans la spécification pour que l'outil soit agréable
+à utiliser mais surtout qu'il permette une configuration poussée et complète de
+la partie RTE.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.45]{images/rte_conf}
+  \caption{Prototype de la configuration des capteurs actionneurs utilisés.}
+  \label{fig:rte_conf}
+\end{figure}
 
 

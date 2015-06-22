@@ -100,9 +100,25 @@
 	symbol=RTE,
 	description=
 	{
-	  {\bf R}eal {\bf T}ime {\bf E}nvironment. Dans la plate-forme \gloss{orianne}, RTE
-	  correspond à l'application développée à partir du code généré. En comparaison à
-	  l'application gérant le matériel de l'\gloss{ecu} (pilotes, API, etc.).
+	  {\bf R}eal-{\bf T}ime {\bf E}nvironment. Dans une architecture
+	  \gloss{autosar}, la couche RTE interface l'application (les fonctions de
+	  contrôle moteur) du microgiciel (pilotes et API) embarqué dans le
+	  calculateur. Il s'occupe aussi de l'échange de données entre fonctions de
+	  l'application car la norme AUTOSAR interdit la communication directe entre
+	  fonctions.
+	}
+}
+\newglossaryentry{autosar}
+  {
+	name=AUTOSAR,
+	symbol=AUTOSAR,
+	description=
+	{
+	  {\bf AU}tomotive {\bf S}ystem {\bf AR}rchitecture. C'est une association
+	  internationale de développement créée en 2003 dans le but de développer et
+	  d'établir une architecture logicielle standardisée et ouverte pour les
+	  véhicules. Elle a définie les sépcificaitons AUTOSAR qio sont devenues un
+	  standards dans le développement embarqué automobile.
 	}
 }
 \newglossaryentry{can}
@@ -131,10 +147,10 @@
 	symbol=OSGi,
 	description=
 	{
-	  {\bf O}pen {\bf S}ervices {\bf G}ateway {\bf i}nitiative est une plate-forme de services
+	  {\bf O}pen {\bf S}ervices {\bf G}ateway {\bf i}nitiative est une plateforme de services
 	  fondée sur le langage Java qui permet de créer des composants dynamiques fournissant
 	  des services. Ces composants peuvent se connecter et se déconnecter \og à la volée
-	  \fg{} à la plate-forme.
+	  \fg{} à la plateforme.
 	}
 }
 \newglossaryentry{maven}
@@ -151,9 +167,14 @@
 \newglossaryentry{a2l}
   {
 	name=A2L,
-	symbol=A2L //TODO,
+	symbol=A2L,
 	description=
 	{
-	  //TODO
+	  est un format de fichier relatif au standard ASAM MCD-2 MC (ou ASAP2). Ce
+	  standard définit un format de description pour les variables internes
+	  d'une ECU utilisée pour les mesures et la calibration. Les fichiers A2L
+	  facilite l'accès des utilisateurs aux paramètres internes d'une ECU grâce
+	  à des noms symboliques. Ces fichiers sont ensuite utilisés par des
+	  logiciels tiers pour visualiser ou modifier ces mesures et calibrations.
 	}
 }

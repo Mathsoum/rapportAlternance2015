@@ -120,12 +120,23 @@ La partie IHM s'organise sous forme d'onglets correspondant à la configuration 
 L'interface de la plateforme a un menu regroupant les différentes actions de
 génération possibles via la plateforme (cf figure \ref{fig:toolsMenu}).
 \begin{description}
-  \item[Génération CAN] Cette action crée deux fichiers source {\tt.c} et {\tt .h} reprenant la configuration de la communication CAN.
-  \item[Génération RTOS] Cette action reprend les listes des points d'entrée des modules de l'application en fonction de leur place dans la configuration.
-  \item[Génération RTE] Cette action crée deux fichiers source {\tt.c} et {\tt .h} déclarant l'ensemble des entrées/sorties des fonctions qui seront échangées entre les différents modules. Elle génère aussi les fonctions d'accès en lecture et en écriture des données fournies par les pilotes du calculateur moteur par l'intermédiaire de pilotes.
-  \item[Génération Orianne] Cette action met en place les fichiers aux emplacements requis pour la compilation d'une application complète. Elle copie les sources générées par la plateforme et celles importées depuis la génération de code des modèles Simulink\up{\circledR}.
-  \item[Compilation] Cette action lance la compilation d'une application complète via le compilateur défini dans la configuration de la plateforme.
-  \item[Génération \gloss{a2l}] Cette action génère le fichier A2L servant de dictionnaire des variables dans la mémoire du calculateur.
+  \item[Génération CAN] Cette action crée deux fichiers source {\tt.c} et {\tt
+	.h} reprenant la configuration de la communication CAN.
+  \item[Génération RTOS] Cette action reprend les listes des points d'entrée des
+	modules de l'application en fonction de leur place dans la configuration.
+  \item[Génération RTE] Cette action crée deux fichiers source {\tt.c} et {\tt
+	.h} déclarant l'ensemble des entrées/sorties des fonctions qui seront
+	échangées entre les différents modules. Elle génère aussi les fonctions
+	d'accès en lecture et en écriture des données fournies par les pilotes du
+	calculateur moteur par l'intermédiaire de pilotes.
+  \item[Génération Orianne] Cette action met en place les fichiers aux
+	emplacements requis pour la compilation d'une application complète. Elle
+	copie les sources générées par la plateforme et celles importées depuis la
+	génération de code des modèles Simulink\up{\circledR}.
+  \item[Compilation] Cette action lance la compilation d'une application
+	complète via le compilateur défini dans la configuration de la plateforme.
+  \item[Génération \gloss{a2l}] Cette action génère le fichier A2L servant de
+	dictionnaire des variables dans la mémoire du calculateur.
 \end{description}
 
 \begin{figure}[h]

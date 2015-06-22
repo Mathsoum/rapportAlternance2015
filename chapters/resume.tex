@@ -17,7 +17,8 @@ parallèle : la plateforme Orianne et le générateur de code QGen.
 La plateforme permet de faire du prototypage rapide de fonctions de contrôle
 moteur à partir de code source généré par Matlab\up{\circledR}
 RTW-EC\up{\circledR}. Elle est en cours de développement. J'ai donc repris du
-code existant que j'ai factorisé pour des raisons de clarté et de complexité.
+code existant que j'ai factorisé dans le but d'optimiser le code et de faciliter
+l'évolution de la plateforme.
 J'ai ensuite ajouté des outils manquants à cette plateforme comme un outil de
 génération de code pour de la communication CAN. Une ébauche de l'outil existait
 mais le code généré était trop gourmand en terme de mémoire pour être intégré
@@ -27,10 +28,12 @@ Le générateur QGen est lui aussi en cours de développement mais pas par Aboar
 Engineering. QGen est un générateur open-source de code embarqué temps réel en C
 et Ada. Le projet est piloté par AdaCore et est issu d'un autre projet
 open-source baptisé Project P. Le rôle que joue Aboard Engineering dans
-l'évolution de ce générateur relève du test et de la revue. Nous possédons les
-qualifications techniques pour analyser le code généré par QGen. Notre objectif
-était de comparer en terme de temps d'exécution et d'impact mémoire les
-performances du code généré par QGen par rapport au code généré par
+l'évolution de ce générateur relève du test et de la revue. Nous avons
+participé à l'évolution de ce générateur de code de manière collaborative avec
+AdaCore via l'intermédiaire d'une plateforme de suivi de bug. Du fait que nous
+possédons les qualifications techniques pour analyser le code généré par QGen,
+notre objectif était de comparer en terme de temps d'exécution et d'impact
+mémoire les performances du code généré par QGen par rapport au code généré par
 Matlab\up{\circledR} RTW-EC\up{\circledR}, outil que nous utilisons et que nous
 avons pris pour référence de comparaison sur ces points précis.
 
@@ -40,7 +43,7 @@ En effet, j'ai pu réduire de manière significative l'impact en mémoire (7 foi
 moins d'espace utilisé) tout en gardant un outil opérationnel. J'ai aussi
 développé une partie de configuration graphique pour s'intégrer au reste de la
 plateforme. Je travaille actuellement à la conception et au développement d'un
-outils de génération de code faisant le lien entre l'application en question et
+outil de génération de code faisant le lien entre l'application en question et
 le matériel sur lequel elle sera déployée.
 
 Les résultats des tests obtenus via la collaboration avec AdaCore autour de QGen
