@@ -1,0 +1,54 @@
+\chapter*{Résumé}
+\addcontentsline{toc}{chapter}{Résumé}
+
+\paragraph*{Mots-clés}
+Matlab, Langage C, Java Swing, MBD, Génération de code, Embarqué, Communicaiton
+CAN, Automobile, Optimisation, Factorisation.
+
+\paragraph*{}
+J'ai effectué ce stage dans le cadre du Master 2 Développement Logiciel. Il
+s'est étalé sur 9 mois du 3 novembre 2014 au 31 juillet 2015 en alternance au
+rythme de 3 jours par semaine en entreprise et 2 jours à l'université. J'ai
+rejoint Aboard Engineering, une entreprise experte dans les domaines de
+l'électronique et de l'informatique industrielle. J'ai occupé un poste
+d'ingénieur en développement logiciel et j'ai travaillé sur deux sujets en
+parallèle : la plateforme Orianne et le générateur de code QGen.
+
+La plateforme permet de faire du prototypage rapide de fonctions de contrôle
+moteur à partir de code source généré par Matlab\up{\circledR}
+RTW-EC\up{\circledR}. Elle est en cours de développement. J'ai donc repris du
+code existant que j'ai factorisé pour des raisons de clarté et de complexité.
+J'ai ensuite ajouté des outils manquants à cette plateforme comme un outil de
+génération de code pour de la communication CAN. Une ébauche de l'outil existait
+mais le code généré était trop gourmand en terme de mémoire pour être intégré
+dans une application de contrôle moteur.
+
+Le générateur QGen est lui aussi en cours de développement mais pas par Aboard
+Engineering. QGen est un générateur open-source de code embarqué temps réel en C
+et Ada. Le projet est piloté par AdaCore et est issu d'un autre projet
+open-source baptisé Project P. Le rôle que joue Aboard Engineering dans
+l'évolution de ce générateur relève du test et de la revue. Nous possédons les
+qualifications techniques pour analyser le code généré par QGen. Notre objectif
+était de comparer en terme de temps d'exécution et d'impact mémoire les
+performances du code généré par QGen par rapport au code généré par
+Matlab\up{\circledR} RTW-EC\up{\circledR}, outil que nous utilisons et que nous
+avons pris pour référence de comparaison sur ces points précis.
+
+Au terme de ce stage, les objectifs sont remplis. Le générateur CAN est
+fonctionnel et les résultats de l'amélioration du code généré sont concluants.
+En effet, j'ai pu réduire de manière significative l'impact en mémoire (7 fois
+moins d'espace utilisé) tout en gardant un outil opérationnel. J'ai aussi
+développé une partie de configuration graphique pour s'intégrer au reste de la
+plateforme. Je travaille actuellement à la conception et au développement d'un
+outils de génération de code faisant le lien entre l'application en question et
+le matériel sur lequel elle sera déployée.
+
+Les résultats des tests obtenus via la collaboration avec AdaCore autour de QGen
+sont eux aussi très concluants. Nous sommes arrivé à obtenir des performances
+équivalentes entre le code généré par RTW-EC\up{\circledR} et QGen. Une première
+version majeure doit sortir courant juin 2015. Avec cette version finale, nous
+devrions être en mesure d'effectuer des tests plus poussés sur banc de test et,
+si ces derniers sont validés, des tests directement sur véhicule.
+
+
+

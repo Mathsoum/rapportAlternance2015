@@ -11,12 +11,14 @@
   covers/coverpage,
   covers/titlepage,
   preamble/thanks,
+%  chapters/resume,
+%  chapters/summary,
   preamble/toc,
   introduction/introduction,
-  chapters/contexte,
-  chapters/subject,
+%  chapters/contexte,
+%  chapters/subject,
   chapters/work,
-  chapters/personalAssessment,
+%  chapters/personalAssessment,
 }
 
 \begin{document}
@@ -39,6 +41,9 @@
 \cleardoublepage% le corps du document est terminé
 
 \appendix
+
+\include{chapters/resume}
+\include{chapters/summary}
 
 \pagestyle{back}
 
