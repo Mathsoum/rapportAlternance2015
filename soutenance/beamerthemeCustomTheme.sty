@@ -2,6 +2,7 @@
 \useinnertheme{default}
 \usefonttheme{serif}
 \usepackage{palatino}
+\usepackage{calc}
 
 \setbeamertemplate{blocks}[rounded][shadow=true]
 
@@ -34,7 +35,8 @@
   \end{beamercolorbox}%
   \begin{beamercolorbox}[wd=.70\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm%
 	plus1fil,center]{author in head/foot}%
-	\usebeamerfont{title in head/foot}Plateforme Orianne -- Prototypage rapide
+	\usebeamerfont{title in head/foot}Orianne et QGen -- Prototypage rapide et
+	génération de code
   \end{beamercolorbox}%
   \begin{beamercolorbox}[wd=.24\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm%
 	plus1fil,center]{author in head/foot}%
@@ -63,9 +65,9 @@
 	%\hspace{\dimexpr
 	%  -1\dimexpr\beamer@rightmargin+\textwidth\relax/\beamer@endpageofdocument
 	%}
-	\rlap{\rule{\dimexpr
-	  (\beamer@startpageofframe-1)\dimexpr
-	  \multiply\textwidth\relax\divide(\beamer@endpageofdocument - 1)}{1.5pt}}
+	%\rlap{\rule{\dimexpr
+	%  \textwidth * (\beamer@startpageofframe-1)\relax%
+	%  /(\beamer@endpageofdocument - 1)}{1.5pt}}
 	% Last frame full
 
 	\vspace{0\baselineskip}
