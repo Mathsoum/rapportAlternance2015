@@ -10,7 +10,7 @@ Simulink\up{\circledR} qui est un outil permettant de définir graphiquement sou
 forme de schéma logique le fonctionnement de systèmes complexes. C'est
 d'ailleurs l'outil utilisé par Aboard Engineering pour définir ses fonctions de
 contrôle moteur. Les avantages de ces modèles sont multiples. Premièrement, les
-outils de MDB permettent de simuler l'exécution du système afin de
+outils de MBD permettent de simuler l'exécution du système afin de
 vérifier son fonctionnement. Ensuite, ces outils embarquent généralement un
 générateur de code afin de générer le code correspondant à ces modèles,
 allégeant grandement le travail des concepteurs et évitant au maximum les
@@ -24,7 +24,7 @@ Comme dit précédemment, la génération de code facilite le travail de concept
 et de réalisation de prototype. Cependant, pour pouvoir compiler le code de
 plusieurs modules différents en une seule application, il reste des étapes à
 réaliser. C'est ici que la plateforme de prototypage rapide Orianne
-entre en jeu. C'est son rôle de mettre en relation ces modules et de créer la
+entre en jeu. Son rôle est de mettre en relation ces modules et de créer la
 \og glue \fg{} entre tous les composants.\\
 La plateforme Orianne est composée de plusieurs parties que nous appellerons \og
 composants \fg{}. J'entrerai plus dans le détail dans la section \ref{sec:rtw}.
@@ -58,7 +58,7 @@ sont également un point important à ne pas négliger. La suite Matlab\up{\circ
 très cher. Même pour une entreprise -- d'autant plus pour une entreprise de
 petite taille comme Aboard Engineering --, les coût des licences
 Matlab\up{\circledR} couvrant toute la suite nécessaire à l'ensemble du
-processus de production ne sont significatif lors de la budgétisation d'un projet.\\
+processus de production sont significatif lors de la budgétisation d'un projet.\\
 
 La problématique est alors de retrouver les même garanties de performance et de
 qualité du code délivrées par Matlab\up{\circledR} sans le coût exorbitant
@@ -67,7 +67,7 @@ se tourner vers une alternative libre : \gloss{qgen} et \gloss{projectp}.
 
 \subsection{QGen}
 A la base de QGen, on trouve un projet open source appelé
-Project P (cf. figure \ref{fig:projectp}. Le but du projet P est de supporter le MDB pour des
+Project P (cf. figure \ref{fig:projectp}). Le but du projet P est de supporter le MBD pour des
 système temps réel embarqués en fournissant un framework de génération de code
 open source capable de :
 \begin{enumerate}
@@ -111,7 +111,7 @@ La partie IHM s'organise sous forme d'onglets correspondant à la configuration 
 \begin{description}
   \item[Configuration moteur] Cette partie permet de configurer les éléments relatifs à un moteur. Le type de carburant, de combustion, d'injection, les fonctions à intégrer dans l'application finale.
   \item[Configuration fonctions] Chaque fonction cochée dans le premier onglet, peut être configurée dans le deuxième onglet. Les fonctions sont donc configurables via des éléments graphiques comme des cases à cocher, des champs texte ou des liste déroulantes.
-  \item[Configuration RTOS] Cet onglet reprend les différences fonctions triées par leur récurrences sous forme de tableau. Chaque ligne représente un point d'entrée d'une fonction de contrôle moteur. L'ordre est significatif et peut être modifié via des boutons. L'ordre des fonctions dans cette table sera répercuté dans le fichier source de configuration du RTOS.
+  \item[Configuration RTOS] Cet onglet reprend les différences fonctions triées par leur récurrence sous forme de tableau. Chaque ligne représente un point d'entrée d'une fonction de contrôle moteur. L'ordre est significatif et peut être modifié via des boutons. L'ordre des fonctions dans cette table sera répercuté dans le fichier source de configuration du RTOS.
   \item[Configuration \gloss{ecu} \& \gloss{rte}] Cette section fait le lien entre les API fournies par les pilotes du calculateur moteur et les variables d'entrée/sortie des fonctions de l'application. En configurant les capteurs et actionneurs du calculateur avec leurs données (variables), la plateforme permet de faire la correspondance entre ces variables et les données consommées par les différentes fonctions de l'application.
   \item[Configuration CAN] L'ECU n'est pas le seul calculateur dans un véhicule. La communication entre ces différentes unités se fait généralement via un bus CAN. L'onglet CAN permet de configurer les différentes cellules de communication et accepte des fichiers XML représentant les différents messages à envoyer sur une cellule définie. L'interface permet également de faire correspondre les signaux reçus ou envoyés à des variables de l'application en entrée ou en sortie des fonctions.
 \end{description}
@@ -127,7 +127,7 @@ génération possibles via la plateforme (cf figure \ref{fig:toolsMenu}).
   \item[Génération RTE] Cette action crée deux fichiers source {\tt.c} et {\tt
 	.h} déclarant l'ensemble des entrées/sorties des fonctions qui seront
 	échangées entre les différents modules. Elle génère aussi les fonctions
-	d'accès en lecture et en écriture des données fournies par les pilotes du
+	d'accès en lecture et en écriture des données fournies par le matériel du
 	calculateur moteur par l'intermédiaire de pilotes.
   \item[Génération Orianne] Cette action met en place les fichiers aux
 	emplacements requis pour la compilation d'une application complète. Elle

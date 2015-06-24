@@ -9,6 +9,7 @@
 \documentclass[xcolor=x11names,compress]{beamer}
 
 %% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{epstopdf}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage[french]{babel}
@@ -94,12 +95,12 @@
 \section{\scshape Objectifs}
 \begin{frame}{\vspace{-17pt}\\\includegraphics[scale=0.4]{images/orianne}}
   \begin{center}
-	\onslide<1->{\includegraphics[scale=0.6]{images/Orianne}}
+	\onslide<1->{\includegraphics[scale=0.6]{images/orianne_schema}}
 	\vfill
 	\onslide<2->{
 	  \begin{tabular}[h]{m{110pt}m{53pt}m{125pt}}
 	  \includegraphics[scale=0.25]{images/matlablogo_cross} &
-	  \includegraphics[scale=2.5]{images/rightarrow} &
+	  \includegraphics[scale=2.5]{images/rightarrow.eps} &
 	  \includegraphics[scale=0.1]{images/qgen} \\
 	  \end{tabular}
 	}
@@ -251,7 +252,7 @@
   Adaptation des templates
   \begin{itemize}
 	\item Suppression des données inutilisées
-	\item Passage en constante des configuration
+	\item Passage en constante des configurations
 	\item Factorisation du code généré
   \end{itemize}
 \end{frame}

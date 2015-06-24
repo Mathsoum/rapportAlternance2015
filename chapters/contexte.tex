@@ -32,15 +32,15 @@ Orianne est une plateforme de prototypage rapide de fonctions de contrôle
 moteur. Elle permet de regrouper différents modules d'un calculateur moteurs
 (transmission, ABS, injection, couple moteur, etc.) afin de générer une unique
 application qui sera déployée dans un calculateur moteur. Les applications
-générées suivent les spécification \gloss{autosar}, une architecture
-standardisée pour le développement d'application embarquées (cf. figure
+générées suivent les spécifications \gloss{autosar}, une architecture
+standardisée pour le dévelop\-pement d'applications embarquées (cf. figure
 \ref{fig:autosar}).
 Pour cela, une interface graphique permet de choisir quelles fonctions sont à intégrer dans
-l'application et de les configurer  mais aussi les caractéristiques du moteur
+l'application et de les configurer  mais aussi de définir les caractéristiques du moteur
 cible ou la configuration du \gloss{rtos} (définition des récurrences des
 tâches).  Une fois l'application configurée, la plateforme va chercher les codes
 sources des modules sélectionnés, génère les fichiers sources non fonctionnels
-(non relatifs à des fonctions moteurs) et effectue la compilation.  La sortie
+(non relatifs à des fonctions moteur) et effectue la compilation.  La sortie
 produite est un fichier binaire représentant le code source compilé ainsi qu'un
 fichier \og dictionnaire \fg{} associant chaque élément à l'adresse à laquelle
 il sera stocké dans la mémoire du calculateur. Ce fichier contient les adresses

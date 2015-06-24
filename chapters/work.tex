@@ -10,7 +10,7 @@ dans QGen.
 \section{La génération de code embarqué}
 La première étape était d'analyser le code généré par RTW-EC\up{\circledR} pour
 avoir une base de comparaison sachant que ce code là est actuellement dans les
-applications déployés sur calculateur.
+applications déployées sur calculateur.
 Pour cela, j'ai installé un analyseur statique de code appelé OCLint. C'est un
 outil open source d'analyse statique de code C/C++ dont les développeurs ne
 fournissent de binaire que
@@ -35,26 +35,26 @@ Ces scripts nous font gagner du temps mais aussi nous donnent des détails sur l
 interfaces de QGen et leurs différences vis à vis de celles de RTW. Ces détails
 seront utiles pour la future intégration de QGen à la plateforme Orianne.
 
-Une fois que l'application complète a été générée avec du code QGen, je l'a
-déployait dans un calculateur sur une table de tests. Je faisait ensuite des
+Une fois que l'application complète a été générée avec du code QGen, je l'ai
+déployé dans un calculateur sur une table de tests. J'ai ensuite fait des
 mesures comparatives entre l'applicaition QGen et l'application
 RTW-EC\up{\circledR} vis à vis du temps d'execution de certaines tâches, de la
-taille de mémoire utilisé et de l'espace de stockage pris par le binaire de
+taille de mémoire utilisée et de l'espace de stockage pris par le binaire de
 l'application.
 
-Les mesures des quantités de mémoire et d'espace de stockage utilisés sont faites
+Les mesures des quantités de mémoire et d'espace de stockage utilisées sont faites
 directement par le compilateur. Il produit un fichier A2L qui s'appuit sur le
 code assembleur compilé pour définir les tailles et addresses que les différents
 composants du code (fonctions, variables globales et locales, etc.) auront directement
 dans la mémoire du calculateur.
 En revanche, la mesure du temps d'execution est moins triviale. Le RTOS du
 calculateur nous permet de définir des tâches à executer à une certaine
-récurrence. J'ai choisit de façon arbitraire une tâche avec 10ms de récurrence.
+récurrence. J'ai choisi de façon arbitraire une tâche à évaluer avec 10ms de récurrence.
 Ensuite, l'ECU possède des sorties digitales et analogiques que nous pouvons manipuler via les API et
 pilotes de cette ECU. J'ai alors utilisé une sortie digitale qu'aucun autre
 composant n'utilisait. Une sortie digitale ne peut prendre que deux valeurs (ou
 états) : 0 ou 1. En mettant cette sortie à 1 au début de l'execution d'une tâche
-précise et à 0 à la fin de cette même tâche, nous auront un 1 sur cette
+précise et à 0 à la fin de cette même tâche, nous aurons un 1 sur cette
 sortie durant toute l'execution de la tâche. Si maintenant nous visualisons le
 signal de cette sortie sur un oscilloscope, on peut observer un signal carré
 représentant les oscillations de la sortie à chaque début et fin de la tâche.
@@ -66,14 +66,15 @@ d'execution de la tâche.
 La première analyse a montré que les deux codes générés étaient équivalents en
 terme d'analyse statique. Nous n'avons pas tenu rigueur des critères de bonne
 pratique d'écriture de code C. \'Etant du code généré, nous n'irons pas le
-modifier à la main -- où en de très rare cas, ce n'est pas l'objectif de la
+modifier à la main -- où en de très rares cas --, ce n'est pas l'objectif de la
 génération de code. Le code RTW-EC\up{\circledR} a une plus grande complexité
 cyclomatique\footnote{La complexité cyclomatique (ou nombre cyclomatique)
 représente le nombre de \og chemins \fg{} possibles durant l'execution d'une
 fonction en tenant compte des conditions, boucles et sauts et de leurs niveaux
-d'imbrications.} mais cela est du au générateur qui ne créer qu'une seule
-fonction de calcul alors que QGen créer plusieurs fichiers sources par modules
-et découpe ses traitements.
+d'imbrications.} mais cela est du au générateur qui ne crée qu'une seule
+fonction de calcul alors que QGen crée plusieurs fichiers sources par modules
+et découpe ses traitements. En revanche, le code généré par QGen est plus
+long en terme de lignes de code.
 
 %Perf sur table
 La où les deux générateurs se sont démarqués, c'est au moment des tests d'une
@@ -99,11 +100,11 @@ d'extrapolation\footnote{L'extrapolation consiste à calculer des valeurs en
 dehors de l'intervalle des paramètres initiaux. Plusieurs règles peuvent
 s'appliquer comme par exemple l'extrapolation linéaire ou l'extrapolation
 majorée/minorée.} lors de recherche de correspondance dans les tables de
-calibration n'était pas les même entre RTW-EC\up{\circledR} et QGen. Nous avons
+calibration n'étaient pas les mêmes entre RTW-EC\up{\circledR} et QGen. Nous avons
 identifié un gain de performance potentiel à ce niveau là.
 
 Après discussion avec AdaCore, ils ont revus ces fonctions ainsi que les options
-d'optimisation de leur générateur afin de, par exemple, réduire le nombre de
+d'optimisations de leur générateur afin de, par exemple, réduire le nombre de
 variables intermédiaires entre la traduction des différents blocs
 Simulink\up{\circledR} et utiliser la même variable en sortie d'un bloc et en
 entrée d'un autre si ces deux blocs sont reliés de manière simple et directe.
@@ -120,7 +121,7 @@ restait encore un écart d'environ $200\mu{}s$ au niveau du temps d'exécution.
 Sur la dernière partie des tests que nous avons effectués, nous nous concentrions
 sur une seule fonction, la plus significative en terme de performance dans notre
 application. Afin d'aider AdaCore dans leur recherche d'améliorations, nous
-leurs avons envoyé notre code généré par RTW-EC\up{\circledR} ainsi que par QGen avec
+leur avons envoyé notre code généré par RTW-EC\up{\circledR} ainsi que par QGen avec
 les modèles Simulink\up{\circledR} nécessaires à cette génération. Ils pouvaient
 alors mieux identifier les morceaux de code moins performants dans le code
 généré par QGen par rapport au code généré par Matlab et ce, dans plusieurs
@@ -130,7 +131,7 @@ version du code généré pour notre composant afin de l'intégrer rapidement da
 notre application et de tester les dernières évolutions. Au terme de plusieurs
 cycles, nous sommes parvenus à une équivalence entre le temps d'exécution des
 deux applications. Une grande avancée qui aboutira à la livraison d'une première
-version majeure courant juin 2015. Une fois cette livraison effectuée, nous
+version majeure durant l'été 2015. Une fois cette livraison effectuée, nous
 pourrons reprendre une application complète pour voir la viabilité de ce nouveau
 générateur dans un contexte concret, d'abord sur table de test et ensuite, si
 les résultats sont concluants, sur véhicule.
@@ -149,7 +150,7 @@ les interfaces sur lesquelles se connecter pour développer de nouveaux outils.
 Il manque actuellement deux composants majeurs à la pateforme : la génération
 CAN et la génération RTE. La génération CAN se charge de gérer la communication
 de l'application sur un bus CAN à l'interieur du véhicule. La génération RTE
-comprend la définition entre les modules -- leurs entrées/sorties -- et les
+comprend la liaison entre les modules -- leurs entrées/sorties -- et les
 capteurs et actionneurs accessibles via l'ECU. C'est également dans la partie
 RTE que nous configurerons le \og basic software \fg{} -- c'est-à-dire le
 microgiciel embarqué dans l'ECU définissant les pilotes et API fournis par cette
