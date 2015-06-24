@@ -165,14 +165,13 @@ d'architecture dans la mesure où l'application ne pouvait se lancer que si tous
 les composants étaient présents. L'aspect dynamique qu'apporte la plateforme
 OSGi n'était pas du tout exploitée.
 
-Après discussion avec mes collègues, nous avons constaté que l'utilisation la
-plateforme OSGi n'avait pas d'intérêt suffisant et ajoutait de la complexité
+Après discussion avec mes collègues, nous avons constaté que l'utilisation de la
+plateforme OSGi n'avait pas un intérêt suffisant et ajoutait de la complexité
 dans le développement. De plus, le découpage des composants n'était pas très
 optimisé, introduisant de la redondance dans le code, ce qui freine le
 développement et la maintenance. Nous avons donc décidé de migrer ces composants
-vers une unique application Java gérée avec \gloss{maven} afin de mieux
-identifier les améliorations possibles et faciliter la factorisation du code
-redondé.
+vers une unique application Java gérée avec \gloss{maven}. Cela nous a permis de
+mieux identifier les améliorations possibles et faciliter la factorisation du code redondé.
 
 On peut citer par exemple la configuration relative à un projet édité par la
 plateforme qui était passée de composant en composant en fonction des actions
@@ -184,8 +183,8 @@ Or l'ajout d'un nouvel outil entraîne -- avec une forte probabilité -- le
 changement de ce fichier de configuration. Un changement même mineur devait être
 répercuté sur chaque outil afin de garder une cohérence dans la gestion de la
 configuration des projets dans tous les outils. Ceci représente une surcharge de
-travail qui en plus induit une perte au niveau des performances par des accès
-disque inutile et des traitements réalisés plusieurs fois sans raison valable.
+travail qui, en plus, induit une perte au niveau des performances par des accès
+disque inutiles et des traitements réalisés plusieurs fois sans raison valable.
 
 Ensuite, toujours dans une optique de factorisation du code afin d'améliorer la
 maintenabilité de l'application et éliminer la duplication de code, j'ai
@@ -211,20 +210,20 @@ L'ECU n'est pas le seul organe communiquant au sein d'un véhicule. Elle peut
 communiquer avec d'autres composants électroniques comme les commandes
 (pédales), les injecteurs, la boîte de vitesse, le contrôleur hybride, etc.
 Cette communication se fait généralement via un bus CAN. Ce module de
-communication n'est pas directement une fonction moteur et est commun à tous les
-modules de l'application dans la mesure où ils peuvent tous communiquer via ce
-bus. Il n'a donc pas de modèle Simulink\up{\circledR} associé ni de code généré.
-C'est pourquoi la plateforme a besoin d'un générateur CAN pour gérer cette
-communication et lier certaines entrées/sorties de modules à des signaux émis ou
-transmis sur le bus.
+communication n'est pas directement une fonction moteur et sera \og utilisée \fg{}
+par à tous les modules de l'application dans la mesure où ils peuvent tous
+communiquer via ce bus. Il n'a donc pas de modèle Simulink\up{\circledR} associé
+ni de code généré. C'est pourquoi la plateforme a besoin d'un générateur CAN
+pour gérer cette communication et lier certaines entrées/sorties de modules à des
+signaux émis ou transmis sur le bus.
 
-Là encore, j'ai repris un générateur existant qui produisait du code C pas
+J'ai repris un générateur existant qui produisait du code C pas
 suffisamment performant d'un point de vue utilisation mémoire pour le
 calculateur cible. Il a donc fallu reprendre les modèles de code existants --
 aussi appelés \og templates \fg{} -- et de les modifier pour générer du code
 moins volumineux, identifier les données et variables superflues, adapter les
 structures de données pour être plus compactes. La modification des modèles de
-code a forcément entrainé une modification du générateur de code. Je l'ai repris
+code a forcément entrainé une modification du générateur. Je l'ai repris
 quasiment dans son intégralité, là aussi pour des raisons de factorisation, de
 duplication de code et de complexité non optimisée.
 
@@ -232,7 +231,7 @@ Les objectifs étaient donc de réduire l'utilisation mémoire du code C
 généré pour la communication CAN et de gagner en modularité et en clarté dans le
 code du générateur. Une fois ces deux points éclaircis, il faudra intégrer le
 générateur à la plateforme. Cependant, le complètement de ces objetifs est
-primordiale pour avoir une outil viable et fonctionnel avant l'intégration de la
+primordiale pour avoir une outil viable et fonctionnel avant l'intégration à la
 plateforme.
 
 La configuration CAN est basée sur des fichiers XML de description des
@@ -269,11 +268,11 @@ communication CAN. J'ai aussi identifié un peu de redondance dans les données
 sur un point précis. Sur un bus CAN, la partie données de la trame peut être
 formatée selon deux formats : le format Intel ou le format Motorola. Dans le
 premier cas elles sont traitées comme deux mots de 32 bits et donc stockées dans
-un tableau à deux cases d'entiers 32 bits. Dans le second cas, elles sont
+un tableau de deux entiers 32 bits. Dans le second cas, elles sont
 traitées comme un tableau de 8 octets. Cependant, les données restent les mêmes.
 Pour éviter cette duplication, j'ai donc définie une {\tt union}, c'est une
 structure de données en C qui permet de représenter des données prenant la même
-place en mémoire mais qui seront lus de plusieurs manières différentes (dans
+place en mémoire mais qui seront lues de plusieurs manières différentes (dans
 notre cas un {\tt uint8[8]} et un {\tt uint32[2]} prennent tous les deux 64 bits
 en mémoire mais fournissent les données sous deux formats différents).
 
@@ -288,11 +287,11 @@ dans le template n'influe pas sur le traitement des autres balises.
 
 Côté performance, l'objectif était de prendre le moins de place possible dans la
 mémoire du calculateur. J'ai réussi à diviser par 7 l'espace mémoire utilisé. En
-contre partie, la configuration des trames -- qui sont des données statiques et
+contrepartie, la configuration des trames -- qui sont des données statiques,
 constantes -- est stockée directement dans l'espace mémoire du calculateur avec
 le code compilé.\\
 
-La partie génération terminée, la prochaine tâche a été de créer un interface
+La partie génération terminée, la prochaine tâche a été de créer une interface
 graphique à intégrer dans la plateforme pour permettre une configuration plus
 agréable de la partie CAN en utilisant des formulaires et des tables pour faire
 correspondre les variables transmises sur le CAN avec les variables de
@@ -306,15 +305,14 @@ ensuite ajouté ces composant dans un nouvel onglet de la plateforme (cf. figure
 \begin{figure}[h]
  \centering
  \centerline{\includegraphics[scale=0.47]{images/ihmcan_conf}}
- \caption{Interface de configuration des bus CAN utilisés par l'application.}
+ \caption{Interface de configuration des bus CAN utilisés par l'application (capture du 17 juin 2015)}
  \label{fig:ihmcan_conf}
 \end{figure}
 
 \begin{figure}[h]
   \centering
   \centerline{\includegraphics[scale=0.47]{images/ihmcan_signal}}
-  \caption{Interface de configuration des signaux CAN (vue des signaux de
-  sortie).}
+  \caption{Interface de configuration des signaux CAN (vue des signaux d'entrée, capture du 17 juin 2015)}
   \label{fig:ihmcan_signal}
 \end{figure}
 
@@ -369,7 +367,7 @@ la partie RTE.
 \begin{figure}[h]
   \centering
   \includegraphics[scale=0.45]{images/rte_conf}
-  \caption{Prototype de la configuration des capteurs actionneurs utilisés.}
+  \caption{Prototype de la configuration des capteurs et actionneurs utilisés. (capture du 17 juin 2015)}
   \label{fig:rte_conf}
 \end{figure}
 
